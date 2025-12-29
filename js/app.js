@@ -22,7 +22,61 @@ const app = {
         // Initialize progress display
         progress.updateDailyProgress();
         
+        // Sync progress from cloud if logged in
+        await this.syncFromCloud();
+        
         console.log('✅ App initialized successfully!');
+    },
+    
+    /**
+     * Sync progress from cloud database
+     */
+    async syncFromCloud() {
+        if (typeof DB === 'undefined' || !DB.getCurrentUser()) return;
+        
+        try {
+            const cloudProgress = await DB.loadProgress();
+            if (cloudProgress) {
+                // Update header displays
+                const streakCount = document.getElementById('streak-count');
+                const wordsDisplay = document.getElementById('words-learned-display');
+                
+                if (streakCount) streakCount.textContent = cloudProgress.currentStreak || 0;
+                if (wordsDisplay) wordsDisplay.textContent = cloudProgress.totalWordsLearned || 0;
+                
+                console.log('☁️ Synced from cloud:', cloudProgress);
+            }
+        } catch (error) {
+            console.warn('Could not sync from cloud:', error);
+        }
+    },
+    
+    /**
+     * Record learning progress to cloud
+     */
+    async recordProgress(topicId, wordsLearned) {
+        if (typeof DB === 'undefined' || !DB.getCurrentUser()) return;
+        
+        try {
+            await DB.recordWordsLearned(topicId, wordsLearned);
+            await this.syncFromCloud();
+        } catch (error) {
+            console.warn('Could not record progress:', error);
+        }
+    },
+    
+    /**
+     * Record quiz result to cloud
+     */
+    async recordQuiz(topicId, score, total) {
+        if (typeof DB === 'undefined' || !DB.getCurrentUser()) return;
+        
+        try {
+            await DB.recordQuizResult(topicId, score, total);
+            await this.syncFromCloud();
+        } catch (error) {
+            console.warn('Could not record quiz:', error);
+        }
     },
     
     /**
@@ -56,21 +110,53 @@ const app = {
     },
     
     /**
-     * Update progress display for all topics
+     * Update progress display for all topics (from cloud + local)
      */
     async updateTopicsProgress() {
         const topics = dataLoader.getTopics();
         
+        // Try to get cloud progress first
+        let cloudTopicProgress = {};
+        if (typeof DB !== 'undefined' && DB.getCurrentUser()) {
+            try {
+                const cloudData = await DB.loadProgress();
+                if (cloudData && cloudData.topicProgress) {
+                    cloudTopicProgress = cloudData.topicProgress;
+                }
+            } catch (error) {
+                console.warn('Could not load cloud progress:', error);
+            }
+        }
+        
         for (const topic of topics) {
-            const words = await dataLoader.getWords(topic.id);
-            const topicProgress = progress.getTopicProgress(topic.id, words);
-            
             const progressFill = document.getElementById(`progress-${topic.id}`);
             const progressText = document.getElementById(`progress-text-${topic.id}`);
             
             if (progressFill && progressText) {
-                progressFill.style.width = `${topicProgress.percent}%`;
-                progressText.textContent = `${topicProgress.learned}/${topicProgress.total}`;
+                // Check cloud progress first
+                const cloudProgress = cloudTopicProgress[topic.id];
+                let learned = 0;
+                let total = topic.wordCount;
+                
+                if (cloudProgress) {
+                    // Use cloud data (new detailed format)
+                    if (typeof cloudProgress === 'object') {
+                        learned = cloudProgress.wordsLearned || 0;
+                    } else {
+                        // Old format (just a number)
+                        learned = cloudProgress;
+                    }
+                } else {
+                    // Fallback to local storage
+                    const words = await dataLoader.getWords(topic.id);
+                    const localProgress = progress.getTopicProgress(topic.id, words);
+                    learned = localProgress.learned;
+                    total = localProgress.total;
+                }
+                
+                const percent = total > 0 ? Math.round((learned / total) * 100) : 0;
+                progressFill.style.width = `${percent}%`;
+                progressText.textContent = `${learned}/${total}`;
             }
         }
     },
@@ -90,15 +176,54 @@ const app = {
         
         const topic = topicData.topic;
         const words = topicData.words;
-        const topicProgress = progress.getTopicProgress(topicId, words);
+        
+        // Get progress from cloud first (fetch fresh data), fallback to local
+        let learned = 0;
+        let total = words.length;
+        let wordsStudied = 0;
+        let quizAvg = 0;
+        let wordsDue = 0;
+        
+        if (typeof DB !== 'undefined' && DB.getCurrentUser()) {
+            try {
+                // Use async version to fetch fresh data from cloud
+                const cloudProgress = await DB.getTopicProgressAsync(topicId);
+                if (cloudProgress) {
+                    learned = cloudProgress.wordsLearned || 0;
+                    wordsStudied = cloudProgress.wordsStudied || 0;
+                    quizAvg = cloudProgress.averageQuizScore || 0;
+                }
+                // Get words due for review (uses cached data since we just fetched)
+                const dueWords = DB.getWordsDueForReview(topicId);
+                wordsDue = dueWords ? dueWords.length : 0;
+            } catch (error) {
+                console.warn('Could not load cloud progress:', error);
+            }
+        }
+        
+        // Fallback to local storage if no cloud data
+        if (learned === 0 && wordsStudied === 0) {
+            const localProgress = progress.getTopicProgress(topicId, words);
+            learned = localProgress.learned;
+        }
+        
+        const percent = total > 0 ? Math.round((learned / total) * 100) : 0;
         
         // Update topic screen
         document.getElementById('topic-icon').textContent = topic.icon;
         document.getElementById('topic-title').textContent = topic.name;
         document.getElementById('topic-subtitle').textContent = topic.nameChinese;
-        document.getElementById('topic-progress-fill').style.width = `${topicProgress.percent}%`;
-        document.getElementById('topic-progress-text').textContent = 
-            `${topicProgress.learned}/${topicProgress.total} 已学会`;
+        document.getElementById('topic-progress-fill').style.width = `${percent}%`;
+        
+        // Show detailed progress text
+        let progressText = `${learned}/${total} 已掌握`;
+        if (wordsStudied > 0 && wordsStudied !== learned) {
+            progressText = `✅ ${learned} 掌握 · 📚 ${wordsStudied} 学过 / ${total} 词`;
+        }
+        if (wordsDue > 0) {
+            progressText += ` · 🔄 ${wordsDue} 待复习`;
+        }
+        document.getElementById('topic-progress-text').textContent = progressText;
         
         // Navigate to topic screen
         this.showScreen('topic');
@@ -182,6 +307,13 @@ const app = {
         if (targetScreen) {
             targetScreen.classList.add('active');
         }
+    },
+    
+    /**
+     * Show a specific view (alias for showScreen, used by Auth)
+     */
+    showView(viewName) {
+        this.showScreen(viewName);
     },
     
     /**

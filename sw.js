@@ -3,7 +3,7 @@
  * Enables offline functionality
  */
 
-const CACHE_NAME = 'pet-words-v2.0.0';
+const CACHE_NAME = 'pet-words-v3.0.0';
 const ASSETS_TO_CACHE = [
   './',
   './index.html',
@@ -11,6 +11,9 @@ const ASSETS_TO_CACHE = [
   './css/styles.css',
   './css/animations.css',
   './js/app.js',
+  './js/db.js',
+  './js/auth.js',
+  './js/leaderboard.js',
   './js/data-loader.js',
   './js/flashcard.js',
   './js/stories.js',

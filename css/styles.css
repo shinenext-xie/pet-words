@@ -1516,3 +1516,757 @@ body {
     }
 }
 
+/* ============================================
+   Login Screen Styles
+   ============================================ */
+
+.login-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+}
+
+.login-container {
+    background: var(--bg-card);
+    border-radius: var(--radius-lg);
+    padding: 3rem 2.5rem;
+    width: 90%;
+    max-width: 420px;
+    box-shadow: var(--shadow-lg);
+    text-align: center;
+    animation: slideUp 0.5s ease;
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.login-logo {
+    margin-bottom: 2rem;
+}
+
+.login-icon {
+    font-size: 4rem;
+    display: block;
+    margin-bottom: 1rem;
+    animation: bounce 2s ease infinite;
+}
+
+@keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+
+.login-logo h1 {
+    font-family: 'Fredoka One', cursive;
+    font-size: 1.8rem;
+    color: var(--primary);
+    margin-bottom: 0.5rem;
+}
+
+.login-logo p {
+    color: var(--text-secondary);
+    font-size: 1rem;
+}
+
+.login-form {
+    margin-bottom: 2rem;
+}
+
+.input-group {
+    text-align: left;
+    margin-bottom: 1.5rem;
+}
+
+.input-group label {
+    display: block;
+    font-weight: 600;
+    color: var(--text-secondary);
+    margin-bottom: 0.5rem;
+    font-size: 0.9rem;
+}
+
+.input-group input {
+    width: 100%;
+    padding: 1rem 1.2rem;
+    font-size: 1.1rem;
+    border: 2px solid #E8E8E8;
+    border-radius: var(--radius-sm);
+    font-family: inherit;
+    transition: var(--transition-fast);
+}
+
+.input-group input:focus {
+    outline: none;
+    border-color: var(--primary);
+    box-shadow: 0 0 0 4px rgba(108, 92, 231, 0.1);
+}
+
+.login-error {
+    background: #FFF5F5;
+    color: var(--accent-red);
+    padding: 0.8rem 1rem;
+    border-radius: var(--radius-sm);
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+    border: 1px solid rgba(255, 118, 117, 0.3);
+}
+
+.login-btn {
+    width: 100%;
+    padding: 1rem 2rem;
+    font-size: 1.1rem;
+    font-weight: 700;
+    font-family: inherit;
+    background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+    color: white;
+    border: none;
+    border-radius: var(--radius-md);
+    cursor: pointer;
+    transition: var(--transition-normal);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+}
+
+.login-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+}
+
+.login-btn:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+    transform: none;
+}
+
+.loading-spinner {
+    width: 20px;
+    height: 20px;
+    border: 3px solid rgba(255, 255, 255, 0.3);
+    border-top-color: white;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+.login-features {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+}
+
+.feature-item {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    color: var(--text-secondary);
+    font-size: 0.85rem;
+}
+
+.feature-item span:first-child {
+    font-size: 1.2rem;
+}
+
+/* ============================================
+   Header User Section
+   ============================================ */
+
+.header-right {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.stat-label-mini {
+    font-size: 0.7rem;
+    opacity: 0.9;
+    margin-left: 2px;
+}
+
+.welcome-name {
+    color: var(--accent-orange);
+    font-weight: 700;
+}
+
+.welcome-subtitle {
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 1rem;
+    margin-top: 0.3rem;
+}
+
+.user-section {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.header-btn {
+    background: rgba(255, 255, 255, 0.2);
+    border: none;
+    padding: 0.5rem 0.8rem;
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    font-size: 1rem;
+    transition: var(--transition-fast);
+    color: white;
+}
+
+.header-btn:hover {
+    background: rgba(255, 255, 255, 0.3);
+}
+
+.user-btn {
+    font-family: inherit;
+    font-weight: 600;
+    font-size: 0.85rem;
+    padding: 0.5rem 1rem;
+}
+
+.logout-btn {
+    opacity: 0.8;
+}
+
+.logout-btn:hover {
+    opacity: 1;
+}
+
+/* ============================================
+   Profile Screen Styles
+   ============================================ */
+
+.profile-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 1rem;
+}
+
+.profile-header {
+    text-align: center;
+    padding: 2rem;
+    background: var(--bg-card);
+    border-radius: var(--radius-lg);
+    margin-bottom: 1.5rem;
+    box-shadow: var(--shadow-sm);
+}
+
+.profile-avatar {
+    font-size: 4rem;
+    margin-bottom: 1rem;
+}
+
+.profile-header h2 {
+    font-family: 'Fredoka One', cursive;
+    font-size: 1.8rem;
+    color: var(--primary);
+    margin-bottom: 0.5rem;
+}
+
+.profile-since {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+}
+
+.profile-stats-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.profile-stat-card {
+    background: var(--bg-card);
+    border-radius: var(--radius-md);
+    padding: 1.5rem 1rem;
+    text-align: center;
+    box-shadow: var(--shadow-sm);
+    transition: var(--transition-fast);
+}
+
+.profile-stat-card:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-md);
+}
+
+.profile-stat-icon {
+    font-size: 2rem;
+    display: block;
+    margin-bottom: 0.5rem;
+}
+
+.profile-stat-value {
+    font-family: 'Fredoka One', cursive;
+    font-size: 2rem;
+    color: var(--primary);
+    display: block;
+}
+
+.profile-stat-label {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+}
+
+.profile-section {
+    background: var(--bg-card);
+    border-radius: var(--radius-md);
+    padding: 1.5rem;
+    margin-bottom: 1rem;
+    box-shadow: var(--shadow-sm);
+}
+
+.profile-section h3 {
+    font-size: 1.1rem;
+    margin-bottom: 1rem;
+    color: var(--text-primary);
+}
+
+.topic-progress-list,
+.quiz-history-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.topic-progress-item,
+.quiz-history-item {
+    display: flex;
+    flex-direction: column;
+    padding: 0.8rem 1rem;
+    background: var(--bg-main);
+    border-radius: var(--radius-sm);
+    gap: 0.5rem;
+}
+
+.topic-name,
+.quiz-topic {
+    font-weight: 600;
+    text-transform: capitalize;
+    flex: 1;
+}
+
+.topic-stats {
+    display: flex;
+    gap: 0.8rem;
+    font-size: 0.85rem;
+}
+
+.topic-stats .stat {
+    color: var(--text-secondary);
+}
+
+.mastery-bar {
+    width: 100%;
+    height: 6px;
+    background: rgba(108, 92, 231, 0.2);
+    border-radius: 3px;
+    overflow: hidden;
+}
+
+.mastery-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--primary), var(--accent-green));
+    border-radius: 3px;
+    transition: width 0.3s ease;
+}
+
+.topic-words,
+.quiz-score {
+    color: var(--primary);
+    font-weight: 700;
+}
+
+/* Quiz History - Detailed */
+.quiz-history-item {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.quiz-info {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+}
+
+.quiz-result {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+}
+
+.quiz-detail {
+    color: var(--text-secondary);
+    font-size: 0.85rem;
+}
+
+.quiz-score.score-high {
+    color: var(--accent-green);
+}
+
+.quiz-score.score-medium {
+    color: var(--accent-orange);
+}
+
+.quiz-score.score-low {
+    color: var(--accent-red);
+}
+
+.wrong-count {
+    color: var(--accent-red);
+    font-size: 0.85rem;
+}
+
+.quiz-date {
+    color: var(--text-light);
+    font-size: 0.75rem;
+}
+
+.no-data {
+    color: var(--text-light);
+    text-align: center;
+    padding: 2rem;
+    font-style: italic;
+}
+
+/* Words Due for Review Badge */
+.review-due-badge {
+    background: linear-gradient(135deg, var(--accent-orange), var(--accent-pink));
+    color: white;
+    padding: 0.3rem 0.8rem;
+    border-radius: var(--radius-sm);
+    font-size: 0.85rem;
+    font-weight: 600;
+    animation: pulse 2s infinite;
+}
+
+/* Detailed Stats Cards */
+.detailed-stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 1rem;
+    padding: 1rem 0;
+}
+
+.stat-card-mini {
+    background: var(--bg-main);
+    padding: 1rem;
+    border-radius: var(--radius-sm);
+    text-align: center;
+}
+
+.stat-card-mini .stat-value {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--primary);
+}
+
+.stat-card-mini .stat-label {
+    font-size: 0.75rem;
+    color: var(--text-secondary);
+}
+
+/* ============================================
+   Leaderboard Modal Styles
+   ============================================ */
+
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    padding: 1rem;
+}
+
+.leaderboard-container {
+    background: var(--bg-card);
+    border-radius: var(--radius-lg);
+    width: 100%;
+    max-width: 500px;
+    max-height: 80vh;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    animation: slideUp 0.3s ease;
+}
+
+.leaderboard-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.5rem;
+    background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+    color: white;
+}
+
+.leaderboard-header h2 {
+    font-family: 'Fredoka One', cursive;
+    font-size: 1.4rem;
+}
+
+.modal-close-btn {
+    background: rgba(255, 255, 255, 0.2);
+    border: none;
+    color: white;
+    width: 36px;
+    height: 36px;
+    border-radius: var(--radius-full);
+    cursor: pointer;
+    font-size: 1.2rem;
+    transition: var(--transition-fast);
+}
+
+.modal-close-btn:hover {
+    background: rgba(255, 255, 255, 0.3);
+}
+
+.leaderboard-tabs {
+    display: flex;
+    padding: 0.5rem;
+    gap: 0.5rem;
+    background: var(--bg-main);
+}
+
+.leaderboard-tab {
+    flex: 1;
+    padding: 0.8rem;
+    border: none;
+    background: transparent;
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    font-family: inherit;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--text-secondary);
+    transition: var(--transition-fast);
+}
+
+.leaderboard-tab.active {
+    background: var(--bg-card);
+    color: var(--primary);
+    box-shadow: var(--shadow-sm);
+}
+
+.leaderboard-list {
+    flex: 1;
+    overflow-y: auto;
+    padding: 1rem;
+}
+
+.leaderboard-item {
+    display: flex;
+    align-items: center;
+    padding: 1rem;
+    border-radius: var(--radius-sm);
+    margin-bottom: 0.5rem;
+    background: var(--bg-main);
+    transition: var(--transition-fast);
+}
+
+.leaderboard-item:hover {
+    transform: translateX(5px);
+}
+
+.leaderboard-item.top-1 {
+    background: linear-gradient(135deg, #FFD700 0%, #FFA500 100%);
+    color: white;
+}
+
+.leaderboard-item.top-2 {
+    background: linear-gradient(135deg, #C0C0C0 0%, #A0A0A0 100%);
+    color: white;
+}
+
+.leaderboard-item.top-3 {
+    background: linear-gradient(135deg, #CD7F32 0%, #8B4513 100%);
+    color: white;
+}
+
+.leaderboard-item .rank {
+    font-size: 1.5rem;
+    width: 50px;
+    text-align: center;
+}
+
+.leaderboard-item .name {
+    flex: 1;
+    font-weight: 600;
+    font-size: 1rem;
+}
+
+.leaderboard-item .stat {
+    font-weight: 700;
+    font-size: 1rem;
+}
+
+.loading {
+    text-align: center;
+    padding: 2rem;
+    color: var(--text-secondary);
+}
+
+.error {
+    text-align: center;
+    padding: 2rem;
+    color: var(--accent-red);
+}
+
+/* ============================================
+   Flashcard Completion Modal
+   ============================================ */
+
+.completion-container {
+    background: var(--bg-card);
+    border-radius: var(--radius-lg);
+    padding: 2rem;
+    max-width: 400px;
+    width: 90%;
+    text-align: center;
+    animation: slideUp 0.3s ease;
+}
+
+.completion-icon {
+    font-size: 4rem;
+    margin-bottom: 1rem;
+    animation: bounce 0.5s ease;
+}
+
+.completion-container h2 {
+    font-family: 'Fredoka One', cursive;
+    color: var(--primary);
+    margin-bottom: 0.5rem;
+}
+
+.completion-container p {
+    color: var(--text-secondary);
+    margin-bottom: 1rem;
+}
+
+.stats-row {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin: 1.5rem 0;
+    padding: 1rem;
+    background: var(--bg-main);
+    border-radius: var(--radius-sm);
+}
+
+.stats-row .stat {
+    font-weight: 600;
+    color: var(--primary);
+}
+
+.completion-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+    margin-top: 1.5rem;
+}
+
+.completion-actions .btn {
+    padding: 1rem 1.5rem;
+    border-radius: var(--radius-md);
+    font-weight: 600;
+    cursor: pointer;
+    transition: var(--transition-fast);
+    border: none;
+    font-size: 1rem;
+}
+
+.completion-actions .btn-primary {
+    background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+    color: white;
+}
+
+.completion-actions .btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+}
+
+.completion-actions .btn-outline {
+    background: transparent;
+    border: 2px solid var(--primary);
+    color: var(--primary);
+}
+
+.completion-actions .btn-outline:hover {
+    background: var(--primary-light);
+    color: white;
+}
+
+.completion-actions .btn-secondary {
+    background: var(--bg-main);
+    color: var(--text-secondary);
+}
+
+.completion-actions .btn-secondary:hover {
+    background: var(--bg-dark);
+    color: white;
+}
+
+@keyframes bounce {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.2); }
+}
+
+/* ============================================
+   Responsive - Login & Profile
+   ============================================ */
+
+@media (max-width: 600px) {
+    .login-container {
+        padding: 2rem 1.5rem;
+    }
+    
+    .login-logo h1 {
+        font-size: 1.5rem;
+    }
+    
+    .login-features {
+        flex-direction: column;
+        gap: 0.8rem;
+    }
+    
+    .profile-stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .header-right {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+    
+    .header-stats {
+        order: 1;
+    }
+    
+    .user-section {
+        order: 2;
+    }
+}
+

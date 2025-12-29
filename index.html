@@ -30,6 +30,9 @@
     <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="css/animations.css">
     
+    <!-- LeanCloud SDK -->
+    <script src="https://cdn.jsdelivr.net/npm/leancloud-storage@4.15.2/dist/av-min.js"></script>
+    
     <!-- iPad Splash Screens -->
     <style>
         /* Prevent pull-to-refresh on iOS */
@@ -48,7 +51,56 @@
         <div class="shape shape-5"></div>
     </div>
 
+    <!-- Login Screen -->
+    <div id="login-screen" class="login-screen">
+        <div class="login-container">
+            <div class="login-logo">
+                <span class="login-icon">📚</span>
+                <h1>PET Words Adventure</h1>
+                <p>开启你的单词冒险之旅！</p>
+            </div>
+            
+            <form id="login-form" class="login-form">
+                <div class="input-group">
+                    <label for="username-input">你的名字 Your Name</label>
+                    <input 
+                        type="text" 
+                        id="username-input" 
+                        placeholder="输入你的名字..."
+                        maxlength="20"
+                        autocomplete="off"
+                        required
+                    >
+                </div>
+                
+                <div id="login-error" class="login-error" style="display: none;">
+                    错误信息
+                </div>
+                
+                <button type="submit" id="login-btn" class="login-btn">
+                    🚀 开始学习 Start Learning
+                </button>
+            </form>
+            
+            <div class="login-features">
+                <div class="feature-item">
+                    <span>📖</span>
+                    <span>1824 个单词</span>
+                </div>
+                <div class="feature-item">
+                    <span>🎮</span>
+                    <span>趣味学习</span>
+                </div>
+                <div class="feature-item">
+                    <span>📊</span>
+                    <span>进度追踪</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- Main App Container -->
+    <div id="main-app" style="display: none;">
     <div id="app">
         <!-- Header -->
         <header class="app-header">
@@ -56,15 +108,25 @@
                 <span class="logo-icon">📚</span>
                 <h1>PET Words Adventure</h1>
             </div>
-            <div class="header-stats">
-                <div class="stat-badge streak">
-                    <span class="stat-icon">🔥</span>
-                    <span id="streak-count">0</span>
-                    <span class="stat-label">天</span>
+            <div class="header-right">
+                <div class="header-stats">
+                    <div class="stat-badge streak" title="连续学习天数 Streak">
+                        <span class="stat-icon">🔥</span>
+                        <span id="streak-count">0</span>
+                        <span class="stat-label-mini">天</span>
+                    </div>
+                    <div class="stat-badge words" title="已学单词 Words Learned">
+                        <span class="stat-icon">📖</span>
+                        <span id="words-learned-display">0</span>
+                        <span class="stat-label-mini">词</span>
+                    </div>
                 </div>
-                <div class="stat-badge stars">
-                    <span class="stat-icon">⭐</span>
-                    <span id="stars-count">0</span>
+                <div id="user-section" class="user-section" style="display: none;">
+                    <button id="leaderboard-btn" class="header-btn" title="排行榜 Leaderboard">🏆</button>
+                    <button id="profile-btn" class="header-btn user-btn" title="个人资料 Profile">
+                        👤 <span id="user-display-name">User</span>
+                    </button>
+                    <button id="logout-btn" class="header-btn logout-btn" title="退出登录 Logout">🚪</button>
                 </div>
             </div>
         </header>
@@ -74,7 +136,8 @@
             <!-- Home Screen -->
             <section id="home-screen" class="screen active">
                 <div class="welcome-card">
-                    <h2>欢迎回来！Ready to learn? 🚀</h2>
+                    <h2>欢迎回来，<span id="welcome-username" class="welcome-name">学习者</span>！🚀</h2>
+                    <p class="welcome-subtitle">Ready to learn today?</p>
                     <div class="daily-goal">
                         <div class="goal-progress">
                             <div class="goal-bar">
@@ -372,15 +435,101 @@
                     </div>
                 </div>
             </section>
+
+            <!-- Profile Screen -->
+            <section id="profile-screen" class="screen">
+                <button class="back-btn" onclick="app.goHome()">
+                    <span>←</span> 返回
+                </button>
+
+                <div class="profile-container">
+                    <div class="profile-header">
+                        <div class="profile-avatar">👤</div>
+                        <h2 id="profile-name">小明</h2>
+                        <p class="profile-since">学习开始于: <span id="profile-start-date">2024-12-01</span></p>
+                    </div>
+
+                    <div class="profile-stats-grid">
+                        <div class="profile-stat-card">
+                            <span class="profile-stat-icon">📅</span>
+                            <span class="profile-stat-value" id="profile-days">0</span>
+                            <span class="profile-stat-label">学习天数</span>
+                        </div>
+                        <div class="profile-stat-card">
+                            <span class="profile-stat-icon">📖</span>
+                            <span class="profile-stat-value" id="profile-words">0</span>
+                            <span class="profile-stat-label">已学单词</span>
+                        </div>
+                        <div class="profile-stat-card">
+                            <span class="profile-stat-icon">🔥</span>
+                            <span class="profile-stat-value" id="profile-streak">0</span>
+                            <span class="profile-stat-label">当前连续</span>
+                        </div>
+                        <div class="profile-stat-card">
+                            <span class="profile-stat-icon">🏆</span>
+                            <span class="profile-stat-value" id="profile-best-streak">0</span>
+                            <span class="profile-stat-label">最长连续</span>
+                        </div>
+                        <div class="profile-stat-card">
+                            <span class="profile-stat-icon">📝</span>
+                            <span class="profile-stat-value" id="profile-quizzes">0</span>
+                            <span class="profile-stat-label">测验次数</span>
+                        </div>
+                        <div class="profile-stat-card">
+                            <span class="profile-stat-icon">🎯</span>
+                            <span class="profile-stat-value" id="profile-avg-score">0%</span>
+                            <span class="profile-stat-label">平均分数</span>
+                        </div>
+                    </div>
+
+                    <div class="profile-section">
+                        <h3>📚 主题进度</h3>
+                        <div id="topic-progress-list" class="topic-progress-list">
+                            <!-- Loaded dynamically -->
+                        </div>
+                    </div>
+
+                    <div class="profile-section">
+                        <h3>📝 近期测验</h3>
+                        <div id="quiz-history-list" class="quiz-history-list">
+                            <!-- Loaded dynamically -->
+                        </div>
+                    </div>
+                </div>
+            </section>
         </main>
+
+        <!-- Leaderboard Modal -->
+        <div id="leaderboard-modal" class="modal-overlay" style="display: none;">
+            <div class="leaderboard-container">
+                <div class="leaderboard-header">
+                    <h2>🏆 排行榜 Leaderboard</h2>
+                    <button id="close-leaderboard" class="modal-close-btn">✕</button>
+                </div>
+                
+                <div class="leaderboard-tabs">
+                    <button class="leaderboard-tab active" data-tab="words">📖 单词数</button>
+                    <button class="leaderboard-tab" data-tab="streak">🔥 连续天数</button>
+                    <button class="leaderboard-tab" data-tab="score">🎯 平均分</button>
+                </div>
+                
+                <div id="leaderboard-list" class="leaderboard-list">
+                    <!-- Loaded dynamically -->
+                </div>
+            </div>
+        </div>
 
         <!-- Footer -->
         <footer class="app-footer">
             <p>Made with ❤️ for learning PET words</p>
         </footer>
     </div>
+    </div><!-- End main-app -->
 
     <!-- Scripts -->
+    <script src="js/db.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/leaderboard.js"></script>
     <script src="js/progress.js"></script>
     <script src="js/data-loader.js"></script>
     <script src="js/flashcard.js"></script>
@@ -388,6 +537,43 @@
     <script src="js/quiz.js"></script>
     <script src="js/library.js"></script>
     <script src="js/app.js"></script>
+    
+    <!-- Initialize Database and Auth -->
+    <script>
+        // Wait for DOM to be ready
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', initializeApp);
+        } else {
+            initializeApp();
+        }
+        
+        function initializeApp() {
+            console.log('🚀 Starting initialization...');
+            
+            // Initialize database connection FIRST
+            if (typeof DB !== 'undefined') {
+                DB.init();
+            }
+            
+            // Initialize authentication (handles login screen visibility)
+            if (typeof Auth !== 'undefined') {
+                console.log('🔐 Auth object:', Auth);
+                console.log('🔐 Auth.init type:', typeof Auth.init);
+                if (typeof Auth.init === 'function') {
+                    Auth.init();
+                } else {
+                    console.error('❌ Auth.init is not a function!');
+                }
+            } else {
+                console.error('❌ Auth module not loaded!');
+            }
+            
+            // Initialize leaderboard
+            if (typeof Leaderboard !== 'undefined') {
+                Leaderboard.init();
+            }
+        }
+    </script>
     
     <!-- Service Worker Registration (for offline support) -->
     <script>

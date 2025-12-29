@@ -11,6 +11,7 @@ const quiz = {
     totalQuestions: 10,
     topicId: null,
     answered: false,
+    wrongWords: [],  // Track wrong answers for review
     
     /**
      * Initialize quiz mode
@@ -22,6 +23,7 @@ const quiz = {
         this.currentIndex = 0;
         this.score = 0;
         this.answered = false;
+        this.wrongWords = [];  // Reset wrong words tracking
         
         this.render();
         this.updateHeader();
@@ -86,11 +88,12 @@ const quiz = {
     /**
      * Handle option selection
      */
-    selectOption(index, chinese, isCorrect) {
+    async selectOption(index, chinese, isCorrect) {
         if (this.answered) return;
         this.answered = true;
         
         const word = this.words[this.currentIndex];
+        const wordId = word.id || word.english.toLowerCase().replace(/\s+/g, '_');
         const options = document.querySelectorAll('.quiz-option');
         const feedback = document.getElementById('quiz-feedback');
         const nextBtn = document.getElementById('quiz-next-btn');
@@ -118,18 +121,41 @@ const quiz = {
             feedback.className = 'quiz-feedback correct';
             document.getElementById('feedback-icon').textContent = '✅';
             document.getElementById('feedback-text').textContent = '正确! Great!';
+            
+            // Sync correct answer to cloud
+            await this.syncAnswerToCloud(wordId, true);
         } else {
             progress.updateWordProgress(word.id, false);
+            
+            // Track wrong word for targeted review
+            this.wrongWords.push(wordId);
             
             feedback.className = 'quiz-feedback wrong';
             document.getElementById('feedback-icon').textContent = '❌';
             document.getElementById('feedback-text').textContent = `正确答案是: ${word.chinese}`;
+            
+            // Sync wrong answer to cloud
+            await this.syncAnswerToCloud(wordId, false);
         }
         
         feedback.classList.remove('hidden');
         nextBtn.classList.remove('hidden');
         
         this.updateHeader();
+    },
+    
+    /**
+     * Sync quiz answer to cloud for detailed word tracking
+     */
+    async syncAnswerToCloud(wordId, isCorrect) {
+        if (typeof DB !== 'undefined' && DB.getCurrentUser()) {
+            try {
+                await DB.recordWordLearning(this.topicId, wordId, isCorrect);
+                console.log(`📊 Quiz answer synced: ${wordId} (correct: ${isCorrect})`);
+            } catch (error) {
+                console.warn('⚠️ Could not sync quiz answer:', error.message);
+            }
+        }
     },
     
     /**
@@ -152,7 +178,7 @@ const quiz = {
     /**
      * Show completion screen
      */
-    showCompletion() {
+    async showCompletion() {
         const modal = document.getElementById('quiz-complete');
         const percent = (this.score / this.words.length) * 100;
         
@@ -181,6 +207,16 @@ const quiz = {
         // Award stars
         if (starsCount > 0) {
             progress.addStars(starsCount);
+        }
+        
+        // Record detailed quiz result to cloud (with wrong words for targeted review)
+        if (typeof DB !== 'undefined' && DB.getCurrentUser()) {
+            try {
+                await DB.recordQuizResult(this.topicId, this.score, this.words.length, this.wrongWords);
+                console.log('📊 Quiz completed and synced to cloud');
+            } catch (error) {
+                console.warn('⚠️ Could not sync quiz result:', error.message);
+            }
         }
         
         // Show modal with animation
