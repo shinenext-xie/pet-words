@@ -148,6 +148,22 @@
                     </div>
                 </div>
 
+                <!-- Ebbinghaus Review Card -->
+                <div id="review-card-section" class="review-card-section">
+                    <div class="review-reminder-card" onclick="app.startReview()">
+                        <div class="review-reminder-icon" id="review-icon">🧠</div>
+                        <div class="review-reminder-content">
+                            <h3>艾宾浩斯复习 Spaced Review</h3>
+                            <p id="review-message">你有 <span id="review-due-count" class="review-count">0</span> 个单词需要复习</p>
+                            <div class="review-reminder-tip" id="review-tip">
+                                <span class="tip-badge">💡 记忆曲线</span>
+                                <span id="review-tip-text">及时复习，记得更牢！</span>
+                            </div>
+                        </div>
+                        <div class="review-reminder-arrow" id="review-arrow">→</div>
+                    </div>
+                </div>
+
                 <div class="topic-section">
                     <h3>📖 选择主题 Choose a Topic</h3>
                     <div id="topics-grid" class="topics-grid">
@@ -436,6 +452,81 @@
                 </div>
             </section>
 
+            <!-- Review Screen (Ebbinghaus) -->
+            <section id="review-screen" class="screen">
+                <button class="back-btn" onclick="app.goHome()">
+                    <span>←</span> 返回
+                </button>
+
+                <div class="review-header-info">
+                    <h2>🧠 艾宾浩斯复习</h2>
+                    <p class="review-subtitle">Spaced Repetition Review</p>
+                </div>
+
+                <div class="review-container">
+                    <div class="review-progress">
+                        <span id="review-counter">1 / 10</span>
+                        <span id="review-session-stats" class="review-stats">✅ 0 | ❌ 0</span>
+                        <div class="mini-progress">
+                            <div id="review-progress-fill" class="mini-progress-fill"></div>
+                        </div>
+                    </div>
+
+                    <div class="review-word-info">
+                        <span id="review-mastery" class="mastery-badge">📖 学习中</span>
+                        <span id="review-days-ago" class="days-badge">3 天前</span>
+                    </div>
+
+                    <div id="review-card" class="flashcard review-card" onclick="review.flip()">
+                        <div class="flashcard-inner">
+                            <div class="flashcard-front">
+                                <span class="card-word" id="review-english">word</span>
+                                <div class="sound-buttons">
+                                    <button class="sound-btn" onclick="event.stopPropagation(); review.speak();" title="听发音">
+                                        🔊
+                                    </button>
+                                    <button class="sound-btn sound-btn-slow" onclick="event.stopPropagation(); review.speakSlow();" title="慢速播放">
+                                        🐢
+                                    </button>
+                                </div>
+                                <span class="card-hint">点击翻转 👆</span>
+                            </div>
+                            <div class="flashcard-back">
+                                <span class="card-word" id="review-chinese">词义</span>
+                                <span class="card-english-small" id="review-english-back">word</span>
+                                <div class="sound-buttons sound-buttons-back">
+                                    <button class="sound-btn sound-btn-back" onclick="event.stopPropagation(); review.speak();" title="听发音">
+                                        🔊
+                                    </button>
+                                </div>
+                                <p class="card-example" id="review-example"></p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="review-buttons">
+                        <button class="review-btn forgot-btn" onclick="review.markForgotten()">
+                            <span class="btn-icon">🤔</span>
+                            <span class="btn-text">忘记了</span>
+                        </button>
+                        <button class="review-btn remembered-btn" onclick="review.markRemembered()">
+                            <span class="btn-icon">💪</span>
+                            <span class="btn-text">记住了</span>
+                        </button>
+                    </div>
+
+                    <div class="ebbinghaus-info">
+                        <div class="curve-visual">
+                            <div class="curve-bar" style="--level: 1"></div>
+                            <div class="curve-bar" style="--level: 2"></div>
+                            <div class="curve-bar" style="--level: 3"></div>
+                            <div class="curve-bar" style="--level: 4"></div>
+                        </div>
+                        <p class="curve-tip">💡 记住 = 延长复习间隔 | 忘记 = 明天再复习</p>
+                    </div>
+                </div>
+            </section>
+
             <!-- Profile Screen -->
             <section id="profile-screen" class="screen">
                 <button class="back-btn" onclick="app.goHome()">
@@ -533,6 +624,7 @@
     <script src="js/progress.js"></script>
     <script src="js/data-loader.js"></script>
     <script src="js/flashcard.js"></script>
+    <script src="js/review.js"></script>
     <script src="js/stories.js"></script>
     <script src="js/quiz.js"></script>
     <script src="js/library.js"></script>

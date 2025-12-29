@@ -2235,6 +2235,300 @@ body {
 }
 
 /* ============================================
+   Ebbinghaus Review Mode
+   ============================================ */
+
+/* Review Reminder Card on Home */
+.review-card-section {
+    margin-bottom: 1.5rem;
+}
+
+.review-reminder-card {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border-radius: var(--radius-lg);
+    padding: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    cursor: pointer;
+    transition: var(--transition-normal);
+    box-shadow: var(--shadow-md);
+    color: white;
+}
+
+.review-reminder-card:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-lg);
+}
+
+/* Pending review state - urgent */
+.review-reminder-card.review-pending {
+    background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+    animation: pulse-glow 2s infinite;
+}
+
+/* Complete state - no reviews needed */
+.review-reminder-card.review-complete {
+    background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
+}
+
+@keyframes pulse-glow {
+    0%, 100% {
+        box-shadow: var(--shadow-md);
+    }
+    50% {
+        box-shadow: 0 0 20px rgba(245, 87, 108, 0.5);
+    }
+}
+
+.review-reminder-icon {
+    font-size: 3rem;
+    animation: pulse 2s infinite;
+}
+
+.review-reminder-content {
+    flex: 1;
+}
+
+.review-reminder-content h3 {
+    font-family: 'Fredoka One', cursive;
+    margin-bottom: 0.3rem;
+}
+
+.review-reminder-content p {
+    opacity: 0.9;
+    margin-bottom: 0.5rem;
+}
+
+.review-count {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #FFD700;
+}
+
+.review-reminder-tip {
+    font-size: 0.85rem;
+    opacity: 0.8;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.tip-badge {
+    background: rgba(255,255,255,0.2);
+    padding: 0.2rem 0.5rem;
+    border-radius: 0.3rem;
+    font-size: 0.75rem;
+}
+
+.review-reminder-arrow {
+    font-size: 2rem;
+    opacity: 0.8;
+}
+
+/* Review Screen */
+.review-header-info {
+    text-align: center;
+    margin-bottom: 1.5rem;
+}
+
+.review-header-info h2 {
+    font-family: 'Fredoka One', cursive;
+    color: var(--primary);
+    margin-bottom: 0.3rem;
+}
+
+.review-subtitle {
+    color: var(--text-secondary);
+}
+
+.review-container {
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+.review-progress {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.review-stats {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+}
+
+.review-word-info {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.mastery-badge {
+    padding: 0.3rem 0.8rem;
+    border-radius: var(--radius-sm);
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: white;
+}
+
+.days-badge {
+    padding: 0.3rem 0.8rem;
+    border-radius: var(--radius-sm);
+    font-size: 0.85rem;
+    background: var(--bg-main);
+    color: var(--text-secondary);
+}
+
+.review-card {
+    margin-bottom: 1.5rem;
+}
+
+.review-buttons {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.review-btn {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 1.5rem 1rem;
+    border: none;
+    border-radius: var(--radius-md);
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: var(--transition-fast);
+}
+
+.review-btn .btn-icon {
+    font-size: 2rem;
+}
+
+.forgot-btn {
+    background: linear-gradient(135deg, #ff7675 0%, #d63031 100%);
+    color: white;
+}
+
+.forgot-btn:hover {
+    transform: scale(1.05);
+    box-shadow: 0 5px 20px rgba(214, 48, 49, 0.3);
+}
+
+.remembered-btn {
+    background: linear-gradient(135deg, #00b894 0%, #00a884 100%);
+    color: white;
+}
+
+.remembered-btn:hover {
+    transform: scale(1.05);
+    box-shadow: 0 5px 20px rgba(0, 184, 148, 0.3);
+}
+
+/* Ebbinghaus Curve Visual */
+.ebbinghaus-info {
+    background: var(--bg-main);
+    padding: 1rem;
+    border-radius: var(--radius-md);
+    text-align: center;
+}
+
+.curve-visual {
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    gap: 0.5rem;
+    height: 40px;
+    margin-bottom: 0.5rem;
+}
+
+.curve-bar {
+    width: 30px;
+    background: linear-gradient(to top, var(--primary), var(--primary-light));
+    border-radius: 4px 4px 0 0;
+    height: calc(var(--level) * 10px);
+    transition: height 0.3s ease;
+}
+
+.curve-tip {
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+}
+
+/* Review Stats Grid */
+.review-stats-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0.8rem;
+    margin: 1.5rem 0;
+}
+
+.review-stat-card {
+    background: var(--bg-main);
+    padding: 1rem 0.5rem;
+    border-radius: var(--radius-sm);
+    text-align: center;
+}
+
+.review-stat-card .stat-value {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: var(--primary);
+}
+
+.review-stat-card .stat-label {
+    font-size: 0.75rem;
+    color: var(--text-secondary);
+}
+
+.review-stat-card.correct .stat-value {
+    color: #00b894;
+}
+
+.review-stat-card.wrong .stat-value {
+    color: #d63031;
+}
+
+.ebbinghaus-tip {
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    padding: 1rem;
+    border-radius: var(--radius-sm);
+    display: flex;
+    align-items: flex-start;
+    gap: 0.8rem;
+    margin-top: 1rem;
+    text-align: left;
+}
+
+.ebbinghaus-tip .tip-icon {
+    font-size: 1.5rem;
+}
+
+.ebbinghaus-tip p {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    line-height: 1.5;
+}
+
+/* Pulse animation for review reminder */
+@keyframes pulse {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.1);
+    }
+}
+
+/* ============================================
    Responsive - Login & Profile
    ============================================ */
 

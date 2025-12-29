@@ -12,20 +12,25 @@ const DB = {
     serverURL: 'https://00t9hlvf.lc-cn-n1-shared.com'
   },
 
-  // Mastery levels for Ebbinghaus curve
+  // Mastery levels for Ebbinghaus curve (6 levels)
   MASTERY_LEVELS: {
-    NEW: 0,        // Never seen
-    LEARNING: 1,   // Seen 1-2 times
-    FAMILIAR: 2,   // Seen 3-5 times
-    MASTERED: 3    // Seen 6+ times, good accuracy
+    NEW: 0,        // Just learned
+    LEARNING: 1,   // 1st review done
+    FAMILIAR: 2,   // 2nd review done
+    CONFIDENT: 3,  // 3rd review done
+    MASTERED: 4,   // 4th review done
+    PERMANENT: 5   // In long-term memory
   },
 
-  // Review intervals (days) based on Ebbinghaus curve
+  // Classic Ebbinghaus Review Intervals (days)
+  // Day 0: Learn → Day 1: 1st review → Day 3: 2nd → Day 7: 3rd → Day 14: 4th → Day 30: 5th
   REVIEW_INTERVALS: {
-    0: 1,   // New word: review in 1 day
-    1: 2,   // Learning: review in 2 days
-    2: 4,   // Familiar: review in 4 days
-    3: 7    // Mastered: review in 7 days
+    0: 1,    // NEW: review in 1 day (Day 0 → Day 1)
+    1: 2,    // LEARNING: review in 2 days (Day 1 → Day 3)
+    2: 4,    // FAMILIAR: review in 4 days (Day 3 → Day 7)
+    3: 7,    // CONFIDENT: review in 7 days (Day 7 → Day 14)
+    4: 16,   // MASTERED: review in 16 days (Day 14 → Day 30)
+    5: 30    // PERMANENT: review in 30 days (maintenance)
   },
 
   // Check if online
@@ -264,22 +269,25 @@ const DB = {
       
       if (isCorrect) {
         wordData.correctCount += 1;
-        // When user clicks "记住了", immediately set to FAMILIAR (learned)
-        // This ensures the word is counted as "learned" right away
+        // Classic Ebbinghaus: Each correct review increases mastery by 1 level
+        // First time: NEW(0) → FAMILIAR(2) to count as "learned"
+        // Subsequent reviews: Gradual increase up to PERMANENT(5)
         if (wordData.masteryLevel < this.MASTERY_LEVELS.FAMILIAR) {
+          // First time learning - jump to FAMILIAR
           wordData.masteryLevel = this.MASTERY_LEVELS.FAMILIAR;
-        } else if (wordData.masteryLevel < this.MASTERY_LEVELS.MASTERED) {
-          // Further reviews increase mastery gradually
-          const accuracy = wordData.correctCount / (wordData.correctCount + wordData.incorrectCount);
-          if (accuracy >= 0.8) {
-            wordData.masteryLevel = Math.min(wordData.masteryLevel + 1, this.MASTERY_LEVELS.MASTERED);
-          }
+        } else if (wordData.masteryLevel < this.MASTERY_LEVELS.PERMANENT) {
+          // Each successful review increases by 1 level
+          wordData.masteryLevel += 1;
         }
       } else {
         wordData.incorrectCount += 1;
-        // Decrease mastery if struggling (but keep at LEARNING minimum if previously learned)
-        if (wordData.masteryLevel > this.MASTERY_LEVELS.NEW) {
-          wordData.masteryLevel -= 1;
+        // Forgot word: Drop 1-2 levels based on how well known it was
+        if (wordData.masteryLevel >= this.MASTERY_LEVELS.CONFIDENT) {
+          // Well-known words: drop 2 levels (need more review)
+          wordData.masteryLevel = Math.max(this.MASTERY_LEVELS.LEARNING, wordData.masteryLevel - 2);
+        } else if (wordData.masteryLevel > this.MASTERY_LEVELS.NEW) {
+          // Less known words: drop 1 level
+          wordData.masteryLevel = Math.max(this.MASTERY_LEVELS.LEARNING, wordData.masteryLevel - 1);
         }
       }
 

@@ -3,7 +3,7 @@
  * Enables offline functionality
  */
 
-const CACHE_NAME = 'pet-words-v3.0.0';
+const CACHE_NAME = 'pet-words-v3.3.0';
 const ASSETS_TO_CACHE = [
   './',
   './index.html',
@@ -20,6 +20,7 @@ const ASSETS_TO_CACHE = [
   './js/quiz.js',
   './js/library.js',
   './js/progress.js',
+  './js/review.js',
   './data/words/index.json',
   // All 23 vocabulary topics
   './data/words/clothes-and-accessories.json',

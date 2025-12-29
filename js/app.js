@@ -25,7 +25,111 @@ const app = {
         // Sync progress from cloud if logged in
         await this.syncFromCloud();
         
+        // Update review badge
+        await this.updateReviewBadge();
+        
         console.log('✅ App initialized successfully!');
+    },
+    
+    /**
+     * Update the review badge showing words due for review
+     * Always shows the card with appropriate message
+     */
+    async updateReviewBadge() {
+        const reviewSection = document.getElementById('review-card-section');
+        const reviewMessage = document.getElementById('review-message');
+        const reviewIcon = document.getElementById('review-icon');
+        const reviewTipText = document.getElementById('review-tip-text');
+        const reviewArrow = document.getElementById('review-arrow');
+        const reviewCard = reviewSection?.querySelector('.review-reminder-card');
+        
+        if (typeof DB === 'undefined' || !DB.getCurrentUser()) {
+            if (reviewSection) reviewSection.style.display = 'none';
+            return;
+        }
+        
+        try {
+            const dueWords = DB.getWordsDueForReview();
+            const dueCount = dueWords ? dueWords.length : 0;
+            
+            // Always show the card
+            if (reviewSection) reviewSection.style.display = 'block';
+            
+            if (dueCount > 0) {
+                // Has words to review - urgent style
+                reviewMessage.innerHTML = `你有 <span class="review-count">${dueCount}</span> 个单词需要复习`;
+                reviewIcon.textContent = '🧠';
+                reviewTipText.textContent = '及时复习，记得更牢！';
+                reviewArrow.textContent = '→';
+                reviewCard.classList.remove('review-complete');
+                reviewCard.classList.add('review-pending');
+                console.log(`🧠 ${dueCount} words due for review`);
+            } else {
+                // No words to review - check if user has any learned words
+                const user = DB.getCurrentUser();
+                const wordLearning = user.get('wordLearning') || {};
+                const learnedCount = Object.keys(wordLearning).length;
+                
+                if (learnedCount > 0) {
+                    // Find next review date
+                    let nextReviewDate = null;
+                    for (const data of Object.values(wordLearning)) {
+                        if (data.nextReview) {
+                            if (!nextReviewDate || data.nextReview < nextReviewDate) {
+                                nextReviewDate = data.nextReview;
+                            }
+                        }
+                    }
+                    
+                    // Format next review date
+                    let nextReviewText = '';
+                    if (nextReviewDate) {
+                        const today = new Date().toISOString().split('T')[0];
+                        const tomorrow = new Date(Date.now() + 86400000).toISOString().split('T')[0];
+                        
+                        if (nextReviewDate === today) {
+                            nextReviewText = '今天';
+                        } else if (nextReviewDate === tomorrow) {
+                            nextReviewText = '明天';
+                        } else {
+                            // Format as "1月2日"
+                            const date = new Date(nextReviewDate);
+                            nextReviewText = `${date.getMonth() + 1}月${date.getDate()}日`;
+                        }
+                    }
+                    
+                    reviewMessage.innerHTML = `✅ 太棒了！今天不用复习`;
+                    reviewIcon.textContent = '🎉';
+                    reviewTipText.textContent = nextReviewText ? `下次复习: ${nextReviewText}` : '继续学习新单词吧！';
+                    reviewArrow.textContent = '✓';
+                    reviewCard.classList.remove('review-pending');
+                    reviewCard.classList.add('review-complete');
+                } else {
+                    // No words learned yet
+                    reviewMessage.innerHTML = `开始学习，积累复习单词！`;
+                    reviewIcon.textContent = '📚';
+                    reviewTipText.textContent = '学习后会自动安排复习计划';
+                    reviewArrow.textContent = '→';
+                    reviewCard.classList.remove('review-pending', 'review-complete');
+                }
+            }
+        } catch (error) {
+            console.warn('Could not update review badge:', error);
+        }
+    },
+    
+    /**
+     * Start review mode (Ebbinghaus)
+     */
+    async startReview() {
+        console.log('🧠 Starting Ebbinghaus review mode...');
+        
+        const hasWords = await review.init();
+        
+        if (hasWords) {
+            this.showScreen('review');
+        }
+        // If no words, review.init() shows the "no reviews" message
     },
     
     /**
@@ -277,6 +381,7 @@ const app = {
         this.showScreen('home');
         this.updateTopicsProgress();
         progress.updateDailyProgress();
+        this.updateReviewBadge();
     },
     
     /**
