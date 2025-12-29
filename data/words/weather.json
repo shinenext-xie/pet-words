@@ -1,0 +1,60 @@
+{
+  "topic": {
+    "id": "weather",
+    "name": "Weather",
+    "nameChinese": "天气",
+    "icon": "🌤️",
+    "wordCount": 37
+  },
+  "words": [
+    { "id": "wea-001", "english": "blow", "chinese": "刮；吹", "example": "The wind is blowing.", "exampleChinese": "风在吹。" },
+    { "id": "wea-002", "english": "breeze", "chinese": "微风", "example": "A nice breeze.", "exampleChinese": "一阵宜人的微风。" },
+    { "id": "wea-003", "english": "centigrade", "chinese": "摄氏度", "example": "20 degrees centigrade.", "exampleChinese": "摄氏20度。" },
+    { "id": "wea-004", "english": "cloud", "chinese": "云", "example": "Clouds in the sky.", "exampleChinese": "天上有云。" },
+    { "id": "wea-005", "english": "cold", "chinese": "寒冷的", "example": "It's very cold.", "exampleChinese": "很冷。" },
+    { "id": "wea-006", "english": "cool", "chinese": "凉爽的", "example": "A cool day.", "exampleChinese": "凉爽的一天。" },
+    { "id": "wea-007", "english": "degrees", "chinese": "度", "example": "30 degrees.", "exampleChinese": "30度。" },
+    { "id": "wea-008", "english": "dry", "chinese": "干燥的", "example": "The weather is dry.", "exampleChinese": "天气很干燥。" },
+    { "id": "wea-009", "english": "fog", "chinese": "雾", "example": "Drive slowly in fog.", "exampleChinese": "雾天慢开。" },
+    { "id": "wea-010", "english": "foggy", "chinese": "有雾的", "example": "It's foggy today.", "exampleChinese": "今天有雾。" },
+    { "id": "wea-011", "english": "forecast", "chinese": "预报", "example": "Check the weather forecast.", "exampleChinese": "查看天气预报。" },
+    { "id": "wea-012", "english": "freezing", "chinese": "严寒的", "example": "It's freezing outside.", "exampleChinese": "外面冷极了。" },
+    { "id": "wea-013", "english": "frozen", "chinese": "冻结的", "example": "The lake is frozen.", "exampleChinese": "湖结冰了。" },
+    { "id": "wea-014", "english": "gale", "chinese": "大风", "example": "A gale is coming.", "exampleChinese": "大风要来了。" },
+    { "id": "wea-015", "english": "get wet", "chinese": "被淋湿", "example": "Don't get wet.", "exampleChinese": "别淋湿了。" },
+    { "id": "wea-016", "english": "heat", "chinese": "热量", "example": "Feel the heat.", "exampleChinese": "感受热量。" },
+    { "id": "wea-017", "english": "hot", "chinese": "热的", "example": "It's very hot.", "exampleChinese": "很热。" },
+    { "id": "wea-018", "english": "humid", "chinese": "潮湿的", "example": "The weather is humid.", "exampleChinese": "天气潮湿。" },
+    { "id": "wea-019", "english": "ice", "chinese": "冰", "example": "Be careful on ice.", "exampleChinese": "在冰上小心。" },
+    { "id": "wea-020", "english": "icy", "chinese": "冰冷的；结冰的", "example": "The road is icy.", "exampleChinese": "路结冰了。" },
+    { "id": "wea-021", "english": "lightning", "chinese": "闪电", "example": "Lightning in the sky.", "exampleChinese": "天上有闪电。" },
+    { "id": "wea-022", "english": "mild", "chinese": "温和的", "example": "Mild weather today.", "exampleChinese": "今天天气温和。" },
+    { "id": "wea-023", "english": "rain", "chinese": "雨；下雨", "example": "It's going to rain.", "exampleChinese": "要下雨了。" },
+    { "id": "wea-024", "english": "shower", "chinese": "阵雨", "example": "A quick shower.", "exampleChinese": "一阵小雨。" },
+    { "id": "wea-025", "english": "snow", "chinese": "雪；下雪", "example": "It's snowing!", "exampleChinese": "下雪了！" },
+    { "id": "wea-026", "english": "snowfall", "chinese": "降雪", "example": "Heavy snowfall.", "exampleChinese": "大雪。" },
+    { "id": "wea-027", "english": "storm", "chinese": "暴风雨", "example": "A big storm is coming.", "exampleChinese": "暴风雨要来了。" },
+    { "id": "wea-028", "english": "sun", "chinese": "太阳", "example": "The sun is bright.", "exampleChinese": "阳光明媚。" },
+    { "id": "wea-029", "english": "sunny", "chinese": "晴的", "example": "A sunny day.", "exampleChinese": "晴天。" },
+    { "id": "wea-030", "english": "sunshine", "chinese": "阳光", "example": "Enjoy the sunshine.", "exampleChinese": "享受阳光。" },
+    { "id": "wea-031", "english": "temperature", "chinese": "温度", "example": "Check the temperature.", "exampleChinese": "查看温度。" },
+    { "id": "wea-032", "english": "thunder", "chinese": "雷", "example": "Thunder is scary.", "exampleChinese": "雷声很吓人。" },
+    { "id": "wea-033", "english": "warm", "chinese": "温暖", "example": "It's warm today.", "exampleChinese": "今天很暖和。" },
+    { "id": "wea-034", "english": "weather", "chinese": "天气", "example": "How's the weather?", "exampleChinese": "天气怎么样？" },
+    { "id": "wea-035", "english": "wet", "chinese": "湿的；有雨的", "example": "The ground is wet.", "exampleChinese": "地是湿的。" },
+    { "id": "wea-036", "english": "wind", "chinese": "风", "example": "The wind is strong.", "exampleChinese": "风很大。" },
+    { "id": "wea-037", "english": "windy", "chinese": "有风的", "example": "It's windy outside.", "exampleChinese": "外面有风。" }
+  ],
+  "memoryStories": [
+    {
+      "id": "story-1",
+      "title": "Weather Report",
+      "titleChinese": "天气预报",
+      "story": "Check the {weather} {forecast}! Today will be {sunny} with {sunshine}. The {temperature} is 25 {degrees} {centigrade} - quite {warm}! Tomorrow might be {cloudy} with some {rain} and a {shower}. The {wind} will {blow} - it'll be {windy}! In winter, expect {snow}, {snowfall}, and {ice}. The roads might be {icy} and {frozen}. When it's {cold} and {freezing}, wear warm clothes! Don't {get wet} in the {storm}! Look out for {thunder} and {lightning}. In summer, it's {hot} and sometimes {humid}. A cool {breeze} feels nice on a {mild} day.",
+      "storyChinese": "查看{天气}{预报}！今天将是{晴天}，有{阳光}。{温度}是25{度}{摄氏度}——很{温暖}！明天可能{多云}，有些{雨}和{阵雨}。{风}会{吹}——会{有风}的！冬天，预计{雪}、{降雪}和{冰}。路可能{结冰}和{冻住}。当{冷}和{严寒}时，穿暖和！别在{暴风雨}中{淋湿}！小心{雷}和{闪电}。夏天，{热}，有时{潮湿}。{温和}的日子里，凉爽的{微风}感觉不错。",
+      "wordsUsed": ["weather", "forecast", "sunny", "sunshine", "temperature", "degrees", "centigrade", "warm", "cloud", "rain", "shower", "wind", "blow", "windy", "snow", "snowfall", "ice", "icy", "frozen", "cold", "freezing", "get wet", "storm", "thunder", "lightning", "hot", "humid", "breeze", "mild"],
+      "wordCount": 29
+    }
+  ]
+}
+

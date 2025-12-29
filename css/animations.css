@@ -1,0 +1,434 @@
+/* ============================================
+   PET Words Adventure - Animations
+   Fun, engaging animations for kids
+   ============================================ */
+
+/* Keyframe Animations */
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideInLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes slideInRight {
+    from {
+        opacity: 0;
+        transform: translateX(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes popIn {
+    0% {
+        opacity: 0;
+        transform: scale(0.8);
+    }
+    70% {
+        transform: scale(1.05);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {
+        transform: translateY(0);
+    }
+    40% {
+        transform: translateY(-10px);
+    }
+    60% {
+        transform: translateY(-5px);
+    }
+}
+
+@keyframes shake {
+    0%, 100% {
+        transform: translateX(0);
+    }
+    10%, 30%, 50%, 70%, 90% {
+        transform: translateX(-5px);
+    }
+    20%, 40%, 60%, 80% {
+        transform: translateX(5px);
+    }
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.05);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0) rotate(0deg);
+    }
+    25% {
+        transform: translateY(-20px) rotate(5deg);
+    }
+    50% {
+        transform: translateY(-10px) rotate(0deg);
+    }
+    75% {
+        transform: translateY(-25px) rotate(-5deg);
+    }
+}
+
+@keyframes wiggle {
+    0%, 100% {
+        transform: rotate(0deg);
+    }
+    25% {
+        transform: rotate(-5deg);
+    }
+    75% {
+        transform: rotate(5deg);
+    }
+}
+
+@keyframes glow {
+    0%, 100% {
+        box-shadow: 0 0 5px rgba(108, 92, 231, 0.3);
+    }
+    50% {
+        box-shadow: 0 0 20px rgba(108, 92, 231, 0.6);
+    }
+}
+
+@keyframes confetti {
+    0% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(-200px) rotate(720deg);
+        opacity: 0;
+    }
+}
+
+@keyframes starBurst {
+    0% {
+        transform: scale(0) rotate(0deg);
+        opacity: 0;
+    }
+    50% {
+        opacity: 1;
+    }
+    100% {
+        transform: scale(1.5) rotate(180deg);
+        opacity: 0;
+    }
+}
+
+@keyframes rainbow {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+@keyframes heartbeat {
+    0%, 100% {
+        transform: scale(1);
+    }
+    10%, 30% {
+        transform: scale(0.9);
+    }
+    20%, 40% {
+        transform: scale(1.1);
+    }
+}
+
+/* Animation Utility Classes */
+
+.animate-fadeIn {
+    animation: fadeIn 0.3s ease forwards;
+}
+
+.animate-fadeInUp {
+    animation: fadeInUp 0.4s ease forwards;
+}
+
+.animate-fadeInDown {
+    animation: fadeInDown 0.4s ease forwards;
+}
+
+.animate-slideInLeft {
+    animation: slideInLeft 0.4s ease forwards;
+}
+
+.animate-slideInRight {
+    animation: slideInRight 0.4s ease forwards;
+}
+
+.animate-popIn {
+    animation: popIn 0.4s ease forwards;
+}
+
+.animate-bounce {
+    animation: bounce 1s ease infinite;
+}
+
+.animate-shake {
+    animation: shake 0.5s ease;
+}
+
+.animate-pulse {
+    animation: pulse 1.5s ease infinite;
+}
+
+.animate-float {
+    animation: float 3s ease-in-out infinite;
+}
+
+.animate-wiggle {
+    animation: wiggle 0.5s ease infinite;
+}
+
+.animate-glow {
+    animation: glow 2s ease infinite;
+}
+
+.animate-heartbeat {
+    animation: heartbeat 1s ease infinite;
+}
+
+/* Staggered Animation Delays */
+.delay-1 { animation-delay: 0.1s; }
+.delay-2 { animation-delay: 0.2s; }
+.delay-3 { animation-delay: 0.3s; }
+.delay-4 { animation-delay: 0.4s; }
+.delay-5 { animation-delay: 0.5s; }
+
+/* Celebration Effects */
+.celebration-effect {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 9999;
+}
+
+.confetti-piece {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    animation: confetti 1s ease-out forwards;
+}
+
+/* Correct Answer Effect */
+.correct-effect {
+    animation: popIn 0.3s ease, pulse 0.5s ease 0.3s;
+}
+
+/* Wrong Answer Effect */
+.wrong-effect {
+    animation: shake 0.5s ease;
+}
+
+/* Card Flip Animation Enhancement */
+.card-flip-effect {
+    animation: popIn 0.2s ease;
+}
+
+/* Button Hover Animations */
+.btn-hover-grow {
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.btn-hover-grow:hover {
+    transform: scale(1.05);
+}
+
+.btn-hover-grow:active {
+    transform: scale(0.98);
+}
+
+/* Loading Spinner */
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.loading-spinner {
+    width: 40px;
+    height: 40px;
+    border: 4px solid var(--bg-main);
+    border-top-color: var(--primary);
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+/* Text Highlight Animation */
+@keyframes highlight {
+    0% {
+        background-size: 0% 100%;
+    }
+    100% {
+        background-size: 100% 100%;
+    }
+}
+
+.text-highlight {
+    background: linear-gradient(90deg, var(--accent-orange), var(--accent-orange)) no-repeat;
+    background-size: 0% 100%;
+    animation: highlight 0.5s ease forwards;
+}
+
+/* Star Rating Animation */
+.star-fill {
+    animation: popIn 0.3s ease forwards;
+}
+
+.star-fill:nth-child(1) { animation-delay: 0.1s; }
+.star-fill:nth-child(2) { animation-delay: 0.2s; }
+.star-fill:nth-child(3) { animation-delay: 0.3s; }
+.star-fill:nth-child(4) { animation-delay: 0.4s; }
+.star-fill:nth-child(5) { animation-delay: 0.5s; }
+
+/* Progress Bar Animation */
+.progress-animate {
+    animation: fadeIn 0.3s ease;
+    transition: width 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Topic Card Entrance Animation */
+.topic-card {
+    opacity: 0;
+    animation: fadeInUp 0.5s ease forwards;
+}
+
+.topic-card:nth-child(1) { animation-delay: 0.1s; }
+.topic-card:nth-child(2) { animation-delay: 0.2s; }
+.topic-card:nth-child(3) { animation-delay: 0.3s; }
+.topic-card:nth-child(4) { animation-delay: 0.4s; }
+.topic-card:nth-child(5) { animation-delay: 0.5s; }
+.topic-card:nth-child(6) { animation-delay: 0.6s; }
+
+/* Success Checkmark Animation */
+@keyframes checkmark {
+    0% {
+        stroke-dashoffset: 100;
+    }
+    100% {
+        stroke-dashoffset: 0;
+    }
+}
+
+.checkmark-animate {
+    stroke-dasharray: 100;
+    stroke-dashoffset: 100;
+    animation: checkmark 0.5s ease forwards;
+}
+
+/* Number Counter Animation */
+@keyframes countUp {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.count-animate {
+    animation: countUp 0.3s ease forwards;
+}
+
+/* Ripple Effect */
+.ripple {
+    position: relative;
+    overflow: hidden;
+}
+
+.ripple::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    transition: width 0.6s ease, height 0.6s ease;
+}
+
+.ripple:active::after {
+    width: 300px;
+    height: 300px;
+}
+
+/* Reduced Motion Support */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+

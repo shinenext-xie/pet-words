@@ -1,0 +1,58 @@
+{
+  "topic": {
+    "id": "places-town-city",
+    "name": "Places: Town and City",
+    "nameChinese": "地方：城镇和城市",
+    "icon": "🌆",
+    "wordCount": 35
+  },
+  "words": [
+    { "id": "ptc-001", "english": "airport", "chinese": "机场", "example": "Fly from the airport.", "exampleChinese": "从机场起飞。" },
+    { "id": "ptc-002", "english": "apartment building", "chinese": "公寓楼", "example": "I live in an apartment building.", "exampleChinese": "我住在公寓楼。" },
+    { "id": "ptc-003", "english": "booking office", "chinese": "售票处", "example": "Buy tickets at the booking office.", "exampleChinese": "在售票处买票。" },
+    { "id": "ptc-004", "english": "bridge", "chinese": "桥", "example": "Cross the bridge.", "exampleChinese": "过桥。" },
+    { "id": "ptc-005", "english": "bus station", "chinese": "公共汽车车站", "example": "Wait at the bus station.", "exampleChinese": "在公交车站等。" },
+    { "id": "ptc-006", "english": "bus stop", "chinese": "公共汽车停靠站", "example": "The bus stop is here.", "exampleChinese": "公交站在这里。" },
+    { "id": "ptc-007", "english": "car park", "chinese": "停车场", "example": "Park in the car park.", "exampleChinese": "停在停车场。" },
+    { "id": "ptc-008", "english": "cash machine", "chinese": "提款机", "example": "Get money from the cash machine.", "exampleChinese": "从取款机取钱。" },
+    { "id": "ptc-009", "english": "cashpoint", "chinese": "自动柜员机", "example": "Find a cashpoint.", "exampleChinese": "找一个ATM。" },
+    { "id": "ptc-010", "english": "city centre", "chinese": "市中心", "example": "Go to the city centre.", "exampleChinese": "去市中心。" },
+    { "id": "ptc-011", "english": "corner", "chinese": "角落", "example": "Turn at the corner.", "exampleChinese": "在拐角处转弯。" },
+    { "id": "ptc-012", "english": "crossing", "chinese": "路口", "example": "Wait at the crossing.", "exampleChinese": "在十字路口等。" },
+    { "id": "ptc-013", "english": "crossroads", "chinese": "十字路口", "example": "Turn left at the crossroads.", "exampleChinese": "在十字路口左转。" },
+    { "id": "ptc-014", "english": "fountain", "chinese": "喷泉", "example": "Meet at the fountain.", "exampleChinese": "在喷泉见面。" },
+    { "id": "ptc-015", "english": "market", "chinese": "市场", "example": "Buy fruit at the market.", "exampleChinese": "在市场买水果。" },
+    { "id": "ptc-016", "english": "monument", "chinese": "纪念碑", "example": "Visit the monument.", "exampleChinese": "参观纪念碑。" },
+    { "id": "ptc-017", "english": "motorway", "chinese": "高速公路", "example": "Drive on the motorway.", "exampleChinese": "在高速公路上开车。" },
+    { "id": "ptc-018", "english": "park", "chinese": "公园", "example": "Play in the park.", "exampleChinese": "在公园玩。" },
+    { "id": "ptc-019", "english": "pavement", "chinese": "人行道", "example": "Walk on the pavement.", "exampleChinese": "走人行道。" },
+    { "id": "ptc-020", "english": "petrol station", "chinese": "加油站", "example": "Fill up at the petrol station.", "exampleChinese": "在加油站加油。" },
+    { "id": "ptc-021", "english": "playground", "chinese": "操场，游乐场", "example": "Children play in the playground.", "exampleChinese": "孩子们在操场玩。" },
+    { "id": "ptc-022", "english": "road", "chinese": "路", "example": "Cross the road carefully.", "exampleChinese": "小心过马路。" },
+    { "id": "ptc-023", "english": "roundabout", "chinese": "环状交叉路口", "example": "Go around the roundabout.", "exampleChinese": "绕环岛走。" },
+    { "id": "ptc-024", "english": "route", "chinese": "路线", "example": "Follow this route.", "exampleChinese": "沿这条路线走。" },
+    { "id": "ptc-025", "english": "shopping centre", "chinese": "购物中心", "example": "Shop at the shopping centre.", "exampleChinese": "在购物中心购物。" },
+    { "id": "ptc-026", "english": "signpost", "chinese": "路标", "example": "Follow the signpost.", "exampleChinese": "跟着路标走。" },
+    { "id": "ptc-027", "english": "square", "chinese": "广场", "example": "Meet in the square.", "exampleChinese": "在广场见面。" },
+    { "id": "ptc-028", "english": "station", "chinese": "车站", "example": "Arrive at the station.", "exampleChinese": "到达车站。" },
+    { "id": "ptc-029", "english": "street", "chinese": "街", "example": "Walk down the street.", "exampleChinese": "沿街走。" },
+    { "id": "ptc-030", "english": "subway", "chinese": "（美）地铁", "example": "Take the subway.", "exampleChinese": "坐地铁。" },
+    { "id": "ptc-031", "english": "town", "chinese": "城镇", "example": "Visit the old town.", "exampleChinese": "参观老城。" },
+    { "id": "ptc-032", "english": "tunnel", "chinese": "隧道", "example": "Drive through the tunnel.", "exampleChinese": "开车穿过隧道。" },
+    { "id": "ptc-033", "english": "turning", "chinese": "拐弯", "example": "Take the first turning.", "exampleChinese": "第一个拐弯处转弯。" },
+    { "id": "ptc-034", "english": "underground", "chinese": "（英）地铁", "example": "Travel by underground.", "exampleChinese": "坐地铁。" },
+    { "id": "ptc-035", "english": "zoo", "chinese": "动物园", "example": "Visit the zoo.", "exampleChinese": "参观动物园。" }
+  ],
+  "memoryStories": [
+    {
+      "id": "story-1",
+      "title": "City Directions",
+      "titleChinese": "城市指路",
+      "story": "Welcome to our {town}! To get to the {city centre}, follow the {signpost} down this {street}. At the {corner}, turn right at the {crossing}. Go past the {fountain} in the {square}. Take the {underground} or {subway} from the {station}. Cross the {bridge} over the river. You'll see the {monument} and {market}. The {shopping centre} is near the {park}. Children can play in the {playground}. Walk on the {pavement} along the {road}. At the {roundabout}, follow the {route} to the {airport}!",
+      "storyChinese": "欢迎来到我们的{城镇}！要到{市中心}，沿着这条{街}跟着{路标}走。在{拐角}处，在{十字路口}右转。经过{广场}的{喷泉}。从{车站}乘{地铁}。过河上的{桥}。你会看到{纪念碑}和{市场}。{购物中心}在{公园}附近。孩子们可以在{游乐场}玩。沿着{道路}走{人行道}。在{环岛}处，沿{路线}去{机场}！",
+      "wordsUsed": ["town", "city centre", "signpost", "street", "corner", "crossing", "fountain", "square", "underground", "subway", "station", "bridge", "monument", "market", "shopping centre", "park", "playground", "pavement", "road", "roundabout", "route", "airport"],
+      "wordCount": 22
+    }
+  ]
+}
+

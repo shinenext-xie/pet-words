@@ -1,0 +1,41 @@
+{
+  "topic": {
+    "id": "services",
+    "name": "Services",
+    "nameChinese": "服务",
+    "icon": "🏪",
+    "wordCount": 18
+  },
+  "words": [
+    { "id": "ser-001", "english": "bank", "chinese": "银行", "example": "I need to go to the bank.", "exampleChinese": "我需要去银行。" },
+    { "id": "ser-002", "english": "cafe", "chinese": "咖啡馆", "example": "Let's have coffee at the cafe.", "exampleChinese": "我们去咖啡馆喝咖啡吧。" },
+    { "id": "ser-003", "english": "cafeteria", "chinese": "自助餐厅，食堂", "example": "Eat lunch at the cafeteria.", "exampleChinese": "在食堂吃午饭。" },
+    { "id": "ser-004", "english": "cinema", "chinese": "电影院", "example": "Watch a film at the cinema.", "exampleChinese": "在电影院看电影。" },
+    { "id": "ser-005", "english": "dentist", "chinese": "牙科医生", "example": "I have a dentist appointment.", "exampleChinese": "我有牙医预约。" },
+    { "id": "ser-006", "english": "doctor", "chinese": "医生", "example": "See the doctor.", "exampleChinese": "去看医生。" },
+    { "id": "ser-007", "english": "gallery", "chinese": "画廊，美术馆", "example": "Visit the art gallery.", "exampleChinese": "参观美术馆。" },
+    { "id": "ser-008", "english": "garage", "chinese": "车库，汽车修理厂", "example": "Fix the car at the garage.", "exampleChinese": "在修理厂修车。" },
+    { "id": "ser-009", "english": "hairdresser", "chinese": "理发师", "example": "Get a haircut at the hairdresser.", "exampleChinese": "去理发店剪头发。" },
+    { "id": "ser-010", "english": "hotel", "chinese": "宾馆", "example": "Stay at a hotel.", "exampleChinese": "住酒店。" },
+    { "id": "ser-011", "english": "library", "chinese": "图书馆", "example": "Borrow books from the library.", "exampleChinese": "从图书馆借书。" },
+    { "id": "ser-012", "english": "museum", "chinese": "博物馆", "example": "Visit the history museum.", "exampleChinese": "参观历史博物馆。" },
+    { "id": "ser-013", "english": "post office", "chinese": "邮局", "example": "Send a letter at the post office.", "exampleChinese": "在邮局寄信。" },
+    { "id": "ser-014", "english": "restaurant", "chinese": "饭馆", "example": "Have dinner at the restaurant.", "exampleChinese": "在饭馆吃晚饭。" },
+    { "id": "ser-015", "english": "sports centre", "chinese": "运动中心，体育馆", "example": "Exercise at the sports centre.", "exampleChinese": "在体育馆锻炼。" },
+    { "id": "ser-016", "english": "swimming pool", "chinese": "游泳池", "example": "Swim at the swimming pool.", "exampleChinese": "在游泳池游泳。" },
+    { "id": "ser-017", "english": "theatre", "chinese": "剧院", "example": "Watch a play at the theatre.", "exampleChinese": "在剧院看戏。" },
+    { "id": "ser-018", "english": "tourist information", "chinese": "旅游信息", "example": "Get tourist information.", "exampleChinese": "获取旅游信息。" }
+  ],
+  "memoryStories": [
+    {
+      "id": "story-1",
+      "title": "A Busy Day in Town",
+      "titleChinese": "镇上忙碌的一天",
+      "story": "What a busy day! First, I went to the {bank} for money. Then I visited the {hairdresser} for a haircut. After that, I went to the {post office} to send a letter. For lunch, I ate at a {restaurant} and had coffee at a {cafe}. In the afternoon, I went to the {doctor} and {dentist}. I exercised at the {sports centre} and swam at the {swimming pool}. In the evening, I watched a film at the {cinema} and a play at the {theatre}. I also visited the {museum}, {gallery}, and {library}!",
+      "storyChinese": "多忙碌的一天！首先，我去{银行}取钱。然后我去{理发店}剪头发。之后，我去{邮局}寄信。午餐时，我在{饭馆}吃饭，在{咖啡馆}喝咖啡。下午，我去看了{医生}和{牙医}。我在{体育中心}锻炼，在{游泳池}游泳。晚上，我在{电影院}看电影，在{剧院}看戏。我还参观了{博物馆}、{画廊}和{图书馆}！",
+      "wordsUsed": ["bank", "hairdresser", "post office", "restaurant", "cafe", "doctor", "dentist", "sports centre", "swimming pool", "cinema", "theatre", "museum", "gallery", "library"],
+      "wordCount": 14
+    }
+  ]
+}
+

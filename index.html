@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>PET Words Adventure 🎮</title>
+    
+    <!-- PWA Meta Tags -->
+    <meta name="description" content="Fun vocabulary learning app for PET English exam">
+    <meta name="theme-color" content="#6C5CE7">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="PET Words">
+    
+    <!-- PWA Manifest -->
+    <link rel="manifest" href="manifest.json">
+    
+    <!-- Apple Touch Icons (for iPad home screen) -->
+    <link rel="apple-touch-icon" href="assets/icons/icon.svg">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="assets/icons/icon.svg">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&family=Fredoka+One&display=swap" rel="stylesheet">
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/animations.css">
+    
+    <!-- iPad Splash Screens -->
+    <style>
+        /* Prevent pull-to-refresh on iOS */
+        html, body {
+            overscroll-behavior-y: contain;
+        }
+    </style>
+</head>
+<body>
+    <!-- Animated Background -->
+    <div class="bg-shapes">
+        <div class="shape shape-1"></div>
+        <div class="shape shape-2"></div>
+        <div class="shape shape-3"></div>
+        <div class="shape shape-4"></div>
+        <div class="shape shape-5"></div>
+    </div>
+
+    <!-- Main App Container -->
+    <div id="app">
+        <!-- Header -->
+        <header class="app-header">
+            <div class="logo">
+                <span class="logo-icon">📚</span>
+                <h1>PET Words Adventure</h1>
+            </div>
+            <div class="header-stats">
+                <div class="stat-badge streak">
+                    <span class="stat-icon">🔥</span>
+                    <span id="streak-count">0</span>
+                    <span class="stat-label">天</span>
+                </div>
+                <div class="stat-badge stars">
+                    <span class="stat-icon">⭐</span>
+                    <span id="stars-count">0</span>
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Content Area -->
+        <main class="app-main">
+            <!-- Home Screen -->
+            <section id="home-screen" class="screen active">
+                <div class="welcome-card">
+                    <h2>欢迎回来！Ready to learn? 🚀</h2>
+                    <div class="daily-goal">
+                        <div class="goal-progress">
+                            <div class="goal-bar">
+                                <div id="daily-progress-bar" class="goal-fill" style="width: 0%"></div>
+                            </div>
+                            <span id="daily-progress-text">今日进度: 0/10 词</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="topic-section">
+                    <h3>📖 选择主题 Choose a Topic</h3>
+                    <div id="topics-grid" class="topics-grid">
+                        <!-- Topics loaded dynamically -->
+                    </div>
+                </div>
+            </section>
+
+            <!-- Topic Detail Screen -->
+            <section id="topic-screen" class="screen">
+                <button class="back-btn" onclick="app.goHome()">
+                    <span>←</span> 返回
+                </button>
+                
+                <div class="topic-header">
+                    <span id="topic-icon" class="topic-big-icon">👔</span>
+                    <div class="topic-info">
+                        <h2 id="topic-title">Clothes and Accessories</h2>
+                        <p id="topic-subtitle">衣服与饰品</p>
+                        <div class="topic-progress">
+                            <div class="progress-bar">
+                                <div id="topic-progress-fill" class="progress-fill"></div>
+                            </div>
+                            <span id="topic-progress-text">0/70 已学会</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mode-buttons">
+                    <button class="mode-btn flashcard-btn" onclick="app.startFlashcards()">
+                        <span class="mode-icon">🎴</span>
+                        <span class="mode-text">
+                            <strong>单词卡片</strong>
+                            <small>Flashcards</small>
+                        </span>
+                    </button>
+                    <button class="mode-btn story-btn" onclick="app.startStories()">
+                        <span class="mode-icon">📖</span>
+                        <span class="mode-text">
+                            <strong>趣味故事</strong>
+                            <small>Memory Stories</small>
+                        </span>
+                    </button>
+                    <button class="mode-btn quiz-btn" onclick="app.startQuiz()">
+                        <span class="mode-icon">🎯</span>
+                        <span class="mode-text">
+                            <strong>小测验</strong>
+                            <small>Quiz Mode</small>
+                        </span>
+                    </button>
+                    <button class="mode-btn library-btn" onclick="app.startLibrary()">
+                        <span class="mode-icon">📚</span>
+                        <span class="mode-text">
+                            <strong>单词库</strong>
+                            <small>Word Library</small>
+                        </span>
+                    </button>
+                </div>
+            </section>
+
+            <!-- Flashcard Screen -->
+            <section id="flashcard-screen" class="screen">
+                <button class="back-btn" onclick="app.goToTopic()">
+                    <span>←</span> 返回
+                </button>
+
+                <div class="flashcard-container">
+                    <div class="flashcard-progress">
+                        <span id="card-counter">1 / 70</span>
+                        <div class="mini-progress">
+                            <div id="card-progress-fill" class="mini-progress-fill"></div>
+                        </div>
+                    </div>
+
+                    <div id="flashcard" class="flashcard" onclick="flashcard.flip()">
+                        <div class="flashcard-inner">
+                            <div class="flashcard-front">
+                                <span class="card-word" id="card-english">backpack</span>
+                                <div class="sound-buttons">
+                                    <button class="sound-btn" onclick="event.stopPropagation(); flashcard.speak();" title="Listen 听发音">
+                                        🔊
+                                    </button>
+                                    <button class="sound-btn sound-btn-slow" onclick="event.stopPropagation(); flashcard.speakSlow();" title="Listen slowly 慢速播放">
+                                        🐢
+                                    </button>
+                                </div>
+                                <span class="card-hint">点击翻转 👆</span>
+                            </div>
+                            <div class="flashcard-back">
+                                <span class="card-word" id="card-chinese">背包</span>
+                                <span class="card-english-small" id="card-english-back">backpack</span>
+                                <div class="sound-buttons sound-buttons-back">
+                                    <button class="sound-btn sound-btn-back" onclick="event.stopPropagation(); flashcard.speak();" title="Listen 听发音">
+                                        🔊
+                                    </button>
+                                    <button class="sound-btn sound-btn-back sound-btn-slow" onclick="event.stopPropagation(); flashcard.speakSlow();" title="Listen slowly 慢速播放">
+                                        🐢
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Example Sentence -->
+                    <div class="example-sentence">
+                        <div class="example-label">📝 Example 例句:</div>
+                        <div class="example-english" id="example-english">I carry my books in my backpack.</div>
+                        <div class="example-chinese" id="example-chinese">我用背包装书。</div>
+                        <button class="sound-btn-example" onclick="flashcard.speakExample()" title="Listen to example">
+                            🔊 听例句
+                        </button>
+                    </div>
+
+                    <div class="flashcard-actions">
+                        <button class="action-btn wrong-btn" onclick="flashcard.markWrong()">
+                            <span>😕</span>
+                            <small>再学学</small>
+                        </button>
+                        <button class="action-btn correct-btn" onclick="flashcard.markCorrect()">
+                            <span>😄</span>
+                            <small>记住了!</small>
+                        </button>
+                    </div>
+
+                    <div class="flashcard-nav">
+                        <button class="nav-btn" onclick="flashcard.prev()">⬅️ 上一个</button>
+                        <button class="nav-btn" onclick="flashcard.next()">下一个 ➡️</button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Story Screen -->
+            <section id="story-screen" class="screen">
+                <button class="back-btn" onclick="app.goToTopic()">
+                    <span>←</span> 返回
+                </button>
+
+                <div class="story-container">
+                    <div class="story-header">
+                        <h2 id="story-title">📖 Grandma's Pool Party Disaster</h2>
+                        <p id="story-title-chinese">奶奶的泳池派对灾难</p>
+                        <div class="story-stats">
+                            <span class="word-count">🏷️ <span id="story-word-count">29</span> 个单词</span>
+                        </div>
+                    </div>
+
+                    <div class="story-content">
+                        <div class="story-tabs">
+                            <button class="story-tab active" onclick="stories.showEnglish()">English</button>
+                            <button class="story-tab" onclick="stories.showChinese()">中文</button>
+                            <button class="story-tab" onclick="stories.showBoth()">双语</button>
+                        </div>
+                        
+                        <div id="story-text" class="story-text">
+                            <!-- Story content loaded dynamically -->
+                        </div>
+                    </div>
+
+                    <div class="story-nav">
+                        <button class="story-nav-btn" onclick="stories.prev()">⬅️ 上一个故事</button>
+                        <span id="story-counter">1 / 4</span>
+                        <button class="story-nav-btn" onclick="stories.next()">下一个故事 ➡️</button>
+                    </div>
+                </div>
+
+                <!-- Word Popup -->
+                <div id="word-popup" class="word-popup hidden">
+                    <div class="popup-content">
+                        <span class="popup-english" id="popup-english">fashion</span>
+                        <span class="popup-chinese" id="popup-chinese">时尚</span>
+                        <button class="popup-close" onclick="stories.closePopup()">✕</button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Word Library Screen -->
+            <section id="library-screen" class="screen">
+                <button class="back-btn" onclick="app.goToTopic()">
+                    <span>←</span> 返回
+                </button>
+
+                <div class="library-container">
+                    <div class="library-header">
+                        <h2>📚 单词库 Word Library</h2>
+                        <div class="library-stats">
+                            <span class="stat-learned">✅ <span id="library-learned">0</span> 已学会</span>
+                            <span class="stat-total">📖 <span id="library-total">70</span> 总词数</span>
+                        </div>
+                    </div>
+
+                    <div class="library-controls">
+                        <div class="search-box">
+                            <span class="search-icon">🔍</span>
+                            <input type="text" id="library-search" placeholder="搜索单词 Search..." oninput="library.search(this.value)">
+                        </div>
+                        <div class="filter-buttons">
+                            <button class="filter-btn active" onclick="library.filter('all')">全部</button>
+                            <button class="filter-btn" onclick="library.filter('learned')">已学会 ✅</button>
+                            <button class="filter-btn" onclick="library.filter('unlearned')">未学习 📖</button>
+                        </div>
+                    </div>
+
+                    <div id="library-list" class="library-list">
+                        <!-- Words loaded dynamically -->
+                    </div>
+                </div>
+
+                <!-- Word Detail Popup -->
+                <div id="word-detail-popup" class="word-detail-popup hidden">
+                    <div class="word-detail-content">
+                        <button class="popup-close" onclick="library.closeDetail()">✕</button>
+                        <div class="word-detail-main">
+                            <span class="detail-english" id="detail-english">backpack</span>
+                            <div class="detail-sound-buttons">
+                                <button class="sound-btn-detail" onclick="library.speak()" title="Listen">🔊</button>
+                                <button class="sound-btn-detail" onclick="library.speakSlow()" title="Listen slowly">🐢</button>
+                            </div>
+                        </div>
+                        <span class="detail-chinese" id="detail-chinese">背包</span>
+                        <div class="detail-example">
+                            <p class="detail-example-en" id="detail-example-en">I carry my books in my backpack.</p>
+                            <p class="detail-example-cn" id="detail-example-cn">我用背包装书。</p>
+                            <button class="sound-btn-example-detail" onclick="library.speakExample()">🔊 听例句</button>
+                        </div>
+                        <div class="detail-status" id="detail-status">
+                            <span class="status-learned">✅ 已学会</span>
+                        </div>
+                        <button class="mark-learned-btn" id="mark-learned-btn" onclick="library.toggleLearned()">
+                            标记为已学会
+                        </button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Quiz Screen -->
+            <section id="quiz-screen" class="screen">
+                <button class="back-btn" onclick="app.goToTopic()">
+                    <span>←</span> 返回
+                </button>
+
+                <div class="quiz-container">
+                    <div class="quiz-header">
+                        <div class="quiz-score">
+                            <span>得分: </span>
+                            <span id="quiz-score">0</span>
+                        </div>
+                        <div class="quiz-progress">
+                            <span id="quiz-counter">1 / 10</span>
+                        </div>
+                    </div>
+
+                    <div class="quiz-question">
+                        <h3 id="quiz-prompt">这个词是什么意思？</h3>
+                        <div id="quiz-word" class="quiz-word">backpack</div>
+                    </div>
+
+                    <div id="quiz-options" class="quiz-options">
+                        <!-- Options loaded dynamically -->
+                    </div>
+
+                    <div id="quiz-feedback" class="quiz-feedback hidden">
+                        <span id="feedback-icon">✅</span>
+                        <span id="feedback-text">正确!</span>
+                    </div>
+
+                    <button id="quiz-next-btn" class="quiz-next-btn hidden" onclick="quiz.nextQuestion()">
+                        下一题 ➡️
+                    </button>
+                </div>
+
+                <!-- Quiz Complete Modal -->
+                <div id="quiz-complete" class="modal hidden">
+                    <div class="modal-content celebration">
+                        <h2>🎉 测验完成!</h2>
+                        <div class="final-score">
+                            <span id="final-score">8</span>
+                            <span class="score-divider">/</span>
+                            <span>10</span>
+                        </div>
+                        <p id="score-message">太棒了！继续加油！</p>
+                        <div class="stars-earned">
+                            <span id="stars-earned">⭐⭐⭐</span>
+                        </div>
+                        <button class="primary-btn" onclick="app.goToTopic()">返回</button>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- Footer -->
+        <footer class="app-footer">
+            <p>Made with ❤️ for learning PET words</p>
+        </footer>
+    </div>
+
+    <!-- Scripts -->
+    <script src="js/progress.js"></script>
+    <script src="js/data-loader.js"></script>
+    <script src="js/flashcard.js"></script>
+    <script src="js/stories.js"></script>
+    <script src="js/quiz.js"></script>
+    <script src="js/library.js"></script>
+    <script src="js/app.js"></script>
+    
+    <!-- Service Worker Registration (for offline support) -->
+    <script>
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('./sw.js')
+                    .then((registration) => {
+                        console.log('✅ Service Worker registered:', registration.scope);
+                    })
+                    .catch((error) => {
+                        console.log('❌ Service Worker registration failed:', error);
+                    });
+            });
+        }
+    </script>
+</body>
+</html>
+

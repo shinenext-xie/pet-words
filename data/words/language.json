@@ -1,0 +1,54 @@
+{
+  "topic": {
+    "id": "language",
+    "name": "Language",
+    "nameChinese": "语言",
+    "icon": "💬",
+    "wordCount": 31
+  },
+  "words": [
+    { "id": "lan-001", "english": "advanced", "chinese": "高级的", "example": "She's in the advanced class.", "exampleChinese": "她在高级班。" },
+    { "id": "lan-002", "english": "answer", "chinese": "回答", "example": "Answer the question.", "exampleChinese": "回答问题。" },
+    { "id": "lan-003", "english": "argue", "chinese": "争论，辩论", "example": "Don't argue with me.", "exampleChinese": "别跟我争论。" },
+    { "id": "lan-004", "english": "ask", "chinese": "问，要求", "example": "Ask a question.", "exampleChinese": "提问题。" },
+    { "id": "lan-005", "english": "beginner", "chinese": "初学者", "example": "I'm a beginner.", "exampleChinese": "我是初学者。" },
+    { "id": "lan-006", "english": "chat", "chinese": "聊天", "example": "Let's chat.", "exampleChinese": "我们聊聊。" },
+    { "id": "lan-007", "english": "communicate", "chinese": "交流", "example": "We need to communicate.", "exampleChinese": "我们需要交流。" },
+    { "id": "lan-008", "english": "communication", "chinese": "交流", "example": "Communication is important.", "exampleChinese": "交流很重要。" },
+    { "id": "lan-009", "english": "elementary", "chinese": "初级的", "example": "An elementary course.", "exampleChinese": "初级课程。" },
+    { "id": "lan-010", "english": "email", "chinese": "电子邮件", "example": "Send me an email.", "exampleChinese": "给我发邮件。" },
+    { "id": "lan-011", "english": "grammar", "chinese": "语法", "example": "Study grammar rules.", "exampleChinese": "学习语法规则。" },
+    { "id": "lan-012", "english": "intermediate", "chinese": "中级的", "example": "An intermediate level.", "exampleChinese": "中级水平。" },
+    { "id": "lan-013", "english": "joke", "chinese": "玩笑", "example": "Tell me a joke.", "exampleChinese": "给我讲个笑话。" },
+    { "id": "lan-014", "english": "letter", "chinese": "书信", "example": "Write a letter.", "exampleChinese": "写一封信。" },
+    { "id": "lan-015", "english": "mean", "chinese": "意味着", "example": "What does this mean?", "exampleChinese": "这是什么意思？" },
+    { "id": "lan-016", "english": "meaning", "chinese": "意思", "example": "What's the meaning?", "exampleChinese": "什么意思？" },
+    { "id": "lan-017", "english": "mention", "chinese": "提及", "example": "Don't mention it.", "exampleChinese": "不用客气。" },
+    { "id": "lan-018", "english": "message", "chinese": "信息，消息", "example": "Leave a message.", "exampleChinese": "留言。" },
+    { "id": "lan-019", "english": "pronounce", "chinese": "发音", "example": "How do you pronounce this?", "exampleChinese": "这个怎么发音？" },
+    { "id": "lan-020", "english": "pronunciation", "chinese": "发音", "example": "Good pronunciation!", "exampleChinese": "发音很好！" },
+    { "id": "lan-021", "english": "question", "chinese": "问题", "example": "I have a question.", "exampleChinese": "我有个问题。" },
+    { "id": "lan-022", "english": "say", "chinese": "说", "example": "What did you say?", "exampleChinese": "你说什么？" },
+    { "id": "lan-023", "english": "sentence", "chinese": "句子", "example": "Make a sentence.", "exampleChinese": "造一个句子。" },
+    { "id": "lan-024", "english": "shout", "chinese": "喊，大叫", "example": "Don't shout!", "exampleChinese": "别喊！" },
+    { "id": "lan-025", "english": "speak", "chinese": "说，说话", "example": "Can you speak English?", "exampleChinese": "你会说英语吗？" },
+    { "id": "lan-026", "english": "talk", "chinese": "说，谈话", "example": "Let's talk.", "exampleChinese": "我们聊聊。" },
+    { "id": "lan-027", "english": "tell", "chinese": "告诉", "example": "Tell me a story.", "exampleChinese": "给我讲个故事。" },
+    { "id": "lan-028", "english": "translate", "chinese": "翻译", "example": "Can you translate this?", "exampleChinese": "你能翻译这个吗？" },
+    { "id": "lan-029", "english": "translation", "chinese": "翻译", "example": "The translation is correct.", "exampleChinese": "翻译是正确的。" },
+    { "id": "lan-030", "english": "vocabulary", "chinese": "词汇，词表", "example": "Learn new vocabulary.", "exampleChinese": "学习新词汇。" },
+    { "id": "lan-031", "english": "word", "chinese": "词，单词", "example": "What's this word?", "exampleChinese": "这个词是什么？" }
+  ],
+  "memoryStories": [
+    {
+      "id": "story-1",
+      "title": "Learning English",
+      "titleChinese": "学英语",
+      "story": "I'm learning English! As a {beginner}, I start with {elementary} {grammar} and {vocabulary}. I learn every {word} and {sentence}. When I don't know the {meaning}, I {ask} a {question}. The teacher will {answer} and {tell} me. 'How do you {pronounce} this?' I {say}. Good {pronunciation} is important! I {speak} English, {chat} with friends, and {communicate} well. Sometimes we {argue} - just {joking}! I {translate} and write the {translation}. I send {email}s and {message}s. Soon I'll be at the {intermediate} level, then {advanced}!",
+      "storyChinese": "我在学英语！作为{初学者}，我从{初级}{语法}和{词汇}开始。我学习每个{单词}和{句子}。当我不知道{意思}时，我{问}一个{问题}。老师会{回答}并{告诉}我。'这个怎么{发音}？'我{说}。良好的{发音}很重要！我{说}英语，和朋友{聊天}，{交流}得很好。有时我们{争论}——只是开{玩笑}！我{翻译}并写{翻译}。我发{电子邮件}和{消息}。很快我就会达到{中级}水平，然后是{高级}！",
+      "wordsUsed": ["beginner", "elementary", "grammar", "vocabulary", "word", "sentence", "meaning", "ask", "question", "answer", "tell", "pronounce", "say", "pronunciation", "speak", "chat", "communicate", "argue", "joke", "translate", "translation", "email", "message", "intermediate", "advanced"],
+      "wordCount": 25
+    }
+  ]
+}
+

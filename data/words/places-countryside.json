@@ -1,0 +1,50 @@
+{
+  "topic": {
+    "id": "places-countryside",
+    "name": "Places: Countryside",
+    "nameChinese": "地方：郊野",
+    "icon": "🏕️",
+    "wordCount": 27
+  },
+  "words": [
+    { "id": "pc-001", "english": "area", "chinese": "地区，面积", "example": "This area is beautiful.", "exampleChinese": "这个地区很美。" },
+    { "id": "pc-002", "english": "bay", "chinese": "海湾", "example": "The bay is peaceful.", "exampleChinese": "海湾很平静。" },
+    { "id": "pc-003", "english": "beach", "chinese": "沙滩", "example": "Let's go to the beach.", "exampleChinese": "我们去海滩吧。" },
+    { "id": "pc-004", "english": "campsite", "chinese": "营地", "example": "Set up camp at the campsite.", "exampleChinese": "在营地搭帐篷。" },
+    { "id": "pc-005", "english": "canal", "chinese": "运河", "example": "Boats sail on the canal.", "exampleChinese": "船在运河上航行。" },
+    { "id": "pc-006", "english": "cliff", "chinese": "悬崖", "example": "Be careful near the cliff.", "exampleChinese": "在悬崖附近小心。" },
+    { "id": "pc-007", "english": "desert", "chinese": "沙漠", "example": "The desert is hot.", "exampleChinese": "沙漠很热。" },
+    { "id": "pc-008", "english": "earth", "chinese": "陆地，土地", "example": "Plant seeds in the earth.", "exampleChinese": "在土里种种子。" },
+    { "id": "pc-009", "english": "farm", "chinese": "农场", "example": "Visit the farm.", "exampleChinese": "参观农场。" },
+    { "id": "pc-010", "english": "field", "chinese": "原野，田地", "example": "Cows are in the field.", "exampleChinese": "牛在田野里。" },
+    { "id": "pc-011", "english": "forest", "chinese": "森林", "example": "Walk through the forest.", "exampleChinese": "穿过森林。" },
+    { "id": "pc-012", "english": "harbour", "chinese": "海港，港口", "example": "Ships dock at the harbour.", "exampleChinese": "船停在港口。" },
+    { "id": "pc-013", "english": "hill", "chinese": "山丘，小山", "example": "Climb the hill.", "exampleChinese": "爬山丘。" },
+    { "id": "pc-014", "english": "island", "chinese": "岛", "example": "We visited an island.", "exampleChinese": "我们参观了一个岛。" },
+    { "id": "pc-015", "english": "lake", "chinese": "湖", "example": "Swim in the lake.", "exampleChinese": "在湖里游泳。" },
+    { "id": "pc-016", "english": "land", "chinese": "陆地", "example": "We reached land.", "exampleChinese": "我们到达陆地。" },
+    { "id": "pc-017", "english": "mountain", "chinese": "山，山脉", "example": "Climb the mountain.", "exampleChinese": "爬山。" },
+    { "id": "pc-018", "english": "ocean", "chinese": "海洋", "example": "The ocean is vast.", "exampleChinese": "海洋很广阔。" },
+    { "id": "pc-019", "english": "path", "chinese": "小路", "example": "Follow the path.", "exampleChinese": "沿着小路走。" },
+    { "id": "pc-020", "english": "port", "chinese": "港口", "example": "Ships arrive at the port.", "exampleChinese": "船到达港口。" },
+    { "id": "pc-021", "english": "railway", "chinese": "铁路，轨道", "example": "The train runs on the railway.", "exampleChinese": "火车在铁路上行驶。" },
+    { "id": "pc-022", "english": "rainforest", "chinese": "（热带）雨林", "example": "Explore the rainforest.", "exampleChinese": "探索雨林。" },
+    { "id": "pc-023", "english": "region", "chinese": "地区", "example": "This region is cold.", "exampleChinese": "这个地区很冷。" },
+    { "id": "pc-024", "english": "river", "chinese": "河流", "example": "Fish live in the river.", "exampleChinese": "鱼住在河里。" },
+    { "id": "pc-025", "english": "rock", "chinese": "岩石", "example": "Sit on the rock.", "exampleChinese": "坐在岩石上。" },
+    { "id": "pc-026", "english": "sand", "chinese": "沙子，沙地", "example": "Build castles in the sand.", "exampleChinese": "在沙子里建城堡。" },
+    { "id": "pc-027", "english": "scenery", "chinese": "风景", "example": "The scenery is amazing.", "exampleChinese": "风景太美了。" }
+  ],
+  "memoryStories": [
+    {
+      "id": "story-1",
+      "title": "Nature Adventure",
+      "titleChinese": "自然探险",
+      "story": "Let's explore the {countryside}! Walk along the {path} through the {forest}. See the {river} flow to the {lake}. Climb a {hill} and then a {mountain} for great {scenery}! Visit a {farm} where cows graze in the {field}. Go to the {beach} and play in the {sand}. Look at the {cliff} over the {bay}. In this {area}, you can see the {harbour} and {port}. Travel to a {desert} or {rainforest} in another {region}. Even explore an {island} in the {ocean}! Nature is {amazing}!",
+      "storyChinese": "让我们探索{乡村}！沿着{小路}穿过{森林}。看{河流}流向{湖泊}。爬{山丘}然后爬{山}，欣赏美丽的{风景}！参观{农场}，牛在{田野}吃草。去{海滩}在{沙子}里玩。看{海湾}上的{悬崖}。在这个{地区}，你可以看到{海港}和{港口}。去另一个{区域}的{沙漠}或{雨林}旅行。甚至探索{海洋}中的{岛屿}！大自然{太棒}了！",
+      "wordsUsed": ["path", "forest", "river", "lake", "hill", "mountain", "scenery", "farm", "field", "beach", "sand", "cliff", "bay", "area", "harbour", "port", "desert", "rainforest", "region", "island", "ocean"],
+      "wordCount": 21
+    }
+  ]
+}
+

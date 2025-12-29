@@ -1,0 +1,40 @@
+{
+  "topic": {
+    "id": "colours",
+    "name": "Colours",
+    "nameChinese": "颜色",
+    "icon": "🎨",
+    "wordCount": 17
+  },
+  "words": [
+    { "id": "co-001", "english": "black", "chinese": "黑色", "example": "The cat is black.", "exampleChinese": "这只猫是黑色的。" },
+    { "id": "co-002", "english": "blue", "chinese": "蓝色", "example": "The sky is blue today.", "exampleChinese": "今天天空是蓝色的。" },
+    { "id": "co-003", "english": "brown", "chinese": "棕色", "example": "He has brown eyes.", "exampleChinese": "他有棕色的眼睛。" },
+    { "id": "co-004", "english": "dark", "chinese": "深色", "example": "She wears dark colours.", "exampleChinese": "她穿深色的衣服。" },
+    { "id": "co-005", "english": "gold", "chinese": "金色", "example": "The medal is gold.", "exampleChinese": "这枚奖牌是金色的。" },
+    { "id": "co-006", "english": "golden", "chinese": "金色的", "example": "She has golden hair.", "exampleChinese": "她有金色的头发。" },
+    { "id": "co-007", "english": "green", "chinese": "绿色", "example": "The grass is green.", "exampleChinese": "草是绿色的。" },
+    { "id": "co-008", "english": "grey", "chinese": "灰色", "example": "The elephant is grey.", "exampleChinese": "大象是灰色的。" },
+    { "id": "co-009", "english": "light", "chinese": "浅色", "example": "I prefer light colours.", "exampleChinese": "我喜欢浅色。" },
+    { "id": "co-010", "english": "orange", "chinese": "橙色", "example": "Oranges are orange.", "exampleChinese": "橙子是橙色的。" },
+    { "id": "co-011", "english": "pale", "chinese": "苍白；白皙", "example": "You look pale. Are you okay?", "exampleChinese": "你看起来很苍白。你还好吗？" },
+    { "id": "co-012", "english": "pink", "chinese": "粉色", "example": "Her room is pink.", "exampleChinese": "她的房间是粉色的。" },
+    { "id": "co-013", "english": "purple", "chinese": "紫色", "example": "Grapes are purple.", "exampleChinese": "葡萄是紫色的。" },
+    { "id": "co-014", "english": "red", "chinese": "红色", "example": "The apple is red.", "exampleChinese": "苹果是红色的。" },
+    { "id": "co-015", "english": "silver", "chinese": "银色", "example": "She has a silver ring.", "exampleChinese": "她有一枚银色的戒指。" },
+    { "id": "co-016", "english": "white", "chinese": "白色", "example": "Snow is white.", "exampleChinese": "雪是白色的。" },
+    { "id": "co-017", "english": "yellow", "chinese": "黄色", "example": "The sun is yellow.", "exampleChinese": "太阳是黄色的。" }
+  ],
+  "memoryStories": [
+    {
+      "id": "story-1",
+      "title": "The Rainbow Painting",
+      "titleChinese": "彩虹画",
+      "story": "I painted a rainbow! First, I used {red} for a {golden} sun. Then {orange} and {yellow} for the warm rays. The {green} grass below, the {blue} sky above. I added {purple} flowers and {pink} butterflies. In the {dark} corner, a {grey} cloud. A {brown} tree with {gold} leaves. The {white} snow on mountains, and a {black} cat sleeping in the {light} shade. 'What about {silver}?' asked Mom. So I painted a {pale} moon with {silver} stars!",
+      "storyChinese": "我画了一道彩虹！首先，我用{红色}画了一个{金色的}太阳。然后用{橙色}和{黄色}画温暖的光线。下面是{绿色}的草地，上面是{蓝色}的天空。我加了{紫色}的花和{粉色}的蝴蝶。在{深色}的角落，一朵{灰色}的云。一棵有{金色}叶子的{棕色}树。山上的{白色}雪，还有一只{黑色}的猫在{浅色}的阴影里睡觉。'那{银色}呢？'妈妈问。于是我画了一个{苍白}的月亮和{银色}的星星！",
+      "wordsUsed": ["red", "golden", "orange", "yellow", "green", "blue", "purple", "pink", "dark", "grey", "brown", "gold", "white", "black", "light", "silver", "pale"],
+      "wordCount": 17
+    }
+  ]
+}
+

@@ -1,0 +1,215 @@
+{
+  "version": "2.0.0",
+  "lastUpdated": "2024-12-26",
+  "totalWords": 1824,
+  "topics": [
+    {
+      "id": "clothes-and-accessories",
+      "name": "Clothes and Accessories",
+      "nameChinese": "衣服与饰品",
+      "icon": "👔",
+      "file": "clothes-and-accessories.json",
+      "wordCount": 84,
+      "status": "ready"
+    },
+    {
+      "id": "colours",
+      "name": "Colours",
+      "nameChinese": "颜色",
+      "icon": "🎨",
+      "file": "colours.json",
+      "wordCount": 17,
+      "status": "ready"
+    },
+    {
+      "id": "communications-and-technology",
+      "name": "Communications and Technology",
+      "nameChinese": "信息和技术",
+      "icon": "💻",
+      "file": "communications-and-technology.json",
+      "wordCount": 63,
+      "status": "ready"
+    },
+    {
+      "id": "education",
+      "name": "Education",
+      "nameChinese": "教育",
+      "icon": "📚",
+      "file": "education.json",
+      "wordCount": 81,
+      "status": "ready"
+    },
+    {
+      "id": "entertainment-and-media",
+      "name": "Entertainment and Media",
+      "nameChinese": "娱乐和媒体",
+      "icon": "🎬",
+      "file": "entertainment-and-media.json",
+      "wordCount": 107,
+      "status": "ready"
+    },
+    {
+      "id": "environment",
+      "name": "Environment",
+      "nameChinese": "环境",
+      "icon": "🌍",
+      "file": "environment.json",
+      "wordCount": 12,
+      "status": "ready"
+    },
+    {
+      "id": "food-and-drink",
+      "name": "Food and Drink",
+      "nameChinese": "食物和饮料",
+      "icon": "🍕",
+      "file": "food-and-drink.json",
+      "wordCount": 157,
+      "status": "ready"
+    },
+    {
+      "id": "health-medicine-exercise",
+      "name": "Health, Medicine and Exercise",
+      "nameChinese": "健康、医疗和运动",
+      "icon": "🏥",
+      "file": "health-medicine-exercise.json",
+      "wordCount": 104,
+      "status": "ready"
+    },
+    {
+      "id": "hobbies-and-leisure",
+      "name": "Hobbies and Leisure",
+      "nameChinese": "爱好和闲暇",
+      "icon": "🎮",
+      "file": "hobbies-and-leisure.json",
+      "wordCount": 59,
+      "status": "ready"
+    },
+    {
+      "id": "house-and-home",
+      "name": "House and Home",
+      "nameChinese": "住房和家",
+      "icon": "🏠",
+      "file": "house-and-home.json",
+      "wordCount": 144,
+      "status": "ready"
+    },
+    {
+      "id": "language",
+      "name": "Language",
+      "nameChinese": "语言",
+      "icon": "💬",
+      "file": "language.json",
+      "wordCount": 31,
+      "status": "ready"
+    },
+    {
+      "id": "natural-world",
+      "name": "The Natural World",
+      "nameChinese": "自然世界",
+      "icon": "🌿",
+      "file": "natural-world.json",
+      "wordCount": 97,
+      "status": "ready"
+    },
+    {
+      "id": "personal-feelings",
+      "name": "Personal Feelings, Opinions and Experiences",
+      "nameChinese": "个人感受、观点和经历",
+      "icon": "😊",
+      "file": "personal-feelings.json",
+      "wordCount": 141,
+      "status": "ready"
+    },
+    {
+      "id": "places-buildings",
+      "name": "Places: Buildings",
+      "nameChinese": "地方：建筑",
+      "icon": "🏢",
+      "file": "places-buildings.json",
+      "wordCount": 47,
+      "status": "ready"
+    },
+    {
+      "id": "places-countryside",
+      "name": "Places: Countryside",
+      "nameChinese": "地方：郊野",
+      "icon": "🏕️",
+      "file": "places-countryside.json",
+      "wordCount": 27,
+      "status": "ready"
+    },
+    {
+      "id": "places-town-city",
+      "name": "Places: Town and City",
+      "nameChinese": "地方：城镇和城市",
+      "icon": "🌆",
+      "file": "places-town-city.json",
+      "wordCount": 35,
+      "status": "ready"
+    },
+    {
+      "id": "services",
+      "name": "Services",
+      "nameChinese": "服务",
+      "icon": "🏪",
+      "file": "services.json",
+      "wordCount": 18,
+      "status": "ready"
+    },
+    {
+      "id": "shopping",
+      "name": "Shopping",
+      "nameChinese": "购物",
+      "icon": "🛒",
+      "file": "shopping.json",
+      "wordCount": 59,
+      "status": "ready"
+    },
+    {
+      "id": "sport",
+      "name": "Sport",
+      "nameChinese": "运动",
+      "icon": "⚽",
+      "file": "sport.json",
+      "wordCount": 127,
+      "status": "ready"
+    },
+    {
+      "id": "time",
+      "name": "Time",
+      "nameChinese": "时间",
+      "icon": "⏰",
+      "file": "time.json",
+      "wordCount": 60,
+      "status": "ready"
+    },
+    {
+      "id": "travel-and-transport",
+      "name": "Travel and Transport",
+      "nameChinese": "旅行和交通",
+      "icon": "✈️",
+      "file": "travel-and-transport.json",
+      "wordCount": 176,
+      "status": "ready"
+    },
+    {
+      "id": "weather",
+      "name": "Weather",
+      "nameChinese": "天气",
+      "icon": "🌤️",
+      "file": "weather.json",
+      "wordCount": 37,
+      "status": "ready"
+    },
+    {
+      "id": "work-and-jobs",
+      "name": "Work and Jobs",
+      "nameChinese": "工作与职业",
+      "icon": "💼",
+      "file": "work-and-jobs.json",
+      "wordCount": 141,
+      "status": "ready"
+    }
+  ],
+  "plannedTopics": []
+}

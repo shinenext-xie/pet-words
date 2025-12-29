@@ -1,0 +1,35 @@
+{
+  "topic": {
+    "id": "environment",
+    "name": "Environment",
+    "nameChinese": "环境",
+    "icon": "🌍",
+    "wordCount": 12
+  },
+  "words": [
+    { "id": "env-001", "english": "bottle bank", "chinese": "空瓶回收箱", "example": "Put glass bottles in the bottle bank.", "exampleChinese": "把玻璃瓶放进空瓶回收箱。" },
+    { "id": "env-002", "english": "climate change", "chinese": "气候变化", "example": "Climate change affects everyone.", "exampleChinese": "气候变化影响每个人。" },
+    { "id": "env-003", "english": "gas", "chinese": "汽油", "example": "The car needs gas.", "exampleChinese": "汽车需要汽油。" },
+    { "id": "env-004", "english": "litter", "chinese": "废弃物", "example": "Don't drop litter on the ground.", "exampleChinese": "不要把垃圾扔在地上。" },
+    { "id": "env-005", "english": "petrol", "chinese": "(英)汽油", "example": "We need to buy petrol.", "exampleChinese": "我们需要买汽油。" },
+    { "id": "env-006", "english": "pollution", "chinese": "污染", "example": "Air pollution is a big problem.", "exampleChinese": "空气污染是大问题。" },
+    { "id": "env-007", "english": "public transport", "chinese": "公共交通", "example": "Use public transport to help the environment.", "exampleChinese": "使用公共交通帮助保护环境。" },
+    { "id": "env-008", "english": "recycle", "chinese": "回收", "example": "We recycle paper and plastic.", "exampleChinese": "我们回收纸和塑料。" },
+    { "id": "env-009", "english": "recycled", "chinese": "被回收再利用的", "example": "This bag is made from recycled materials.", "exampleChinese": "这个袋子是用回收材料做的。" },
+    { "id": "env-010", "english": "recycling", "chinese": "回收再利用的", "example": "Recycling helps save the planet.", "exampleChinese": "回收利用有助于保护地球。" },
+    { "id": "env-011", "english": "rubbish bin", "chinese": "垃圾箱", "example": "Put the rubbish in the bin.", "exampleChinese": "把垃圾放进垃圾箱。" },
+    { "id": "env-012", "english": "traffic jam", "chinese": "堵车；交通堵塞", "example": "There was a big traffic jam.", "exampleChinese": "有很大的交通堵塞。" }
+  ],
+  "memoryStories": [
+    {
+      "id": "story-1",
+      "title": "Save Our Planet",
+      "titleChinese": "拯救地球",
+      "story": "{Climate change} is real! Cars use {petrol} and {gas}, causing {pollution}. There's too much {litter} on the streets! Let's {recycle} - use the {bottle bank} and {rubbish bin}. Take {public transport} to avoid the {traffic jam}. Buy {recycled} products. {Recycling} saves our Earth!",
+      "storyChinese": "{气候变化}是真的！汽车使用{汽油}，造成{污染}。街上有太多{垃圾}！让我们{回收}——使用{空瓶回收箱}和{垃圾箱}。乘坐{公共交通}避免{交通堵塞}。购买{回收再利用的}产品。{回收}拯救地球！",
+      "wordsUsed": ["climate change", "petrol", "gas", "pollution", "litter", "recycle", "bottle bank", "rubbish bin", "public transport", "traffic jam", "recycled", "recycling"],
+      "wordCount": 12
+    }
+  ]
+}
+
