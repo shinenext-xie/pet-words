@@ -21,27 +21,55 @@
     <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="assets/icons/icon.svg">
     
-    <!-- Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&family=Fredoka+One&display=swap" rel="stylesheet">
+    <!-- Fonts - Using China-friendly alternative (fonts.loli.net mirrors Google Fonts) -->
+    <!-- Fallback: System fonts if web fonts fail to load -->
+    <link rel="preconnect" href="https://fonts.loli.net" crossorigin>
+    <link href="https://fonts.loli.net/css2?family=Nunito:wght@400;600;700;800&family=Fredoka+One&display=swap" rel="stylesheet" media="print" onload="this.media='all'" onerror="this.remove()">
+    <noscript>
+        <link href="https://fonts.loli.net/css2?family=Nunito:wght@400;600;700;800&family=Fredoka+One&display=swap" rel="stylesheet">
+    </noscript>
     
     <!-- Styles -->
     <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="css/animations.css">
     
-    <!-- LeanCloud SDK -->
-    <script src="https://cdn.jsdelivr.net/npm/leancloud-storage@4.15.2/dist/av-min.js"></script>
+    <!-- LeanCloud SDK with fallback -->
+    <script>
+        // Show loading indicator
+        window.addEventListener('DOMContentLoaded', function() {
+            var loader = document.getElementById('loading-screen');
+            if (loader) loader.style.display = 'flex';
+        });
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/leancloud-storage@4.15.2/dist/av-min.js" 
+            onerror="console.error('LeanCloud CDN failed, trying backup...'); 
+                     var s=document.createElement('script'); 
+                     s.src='https://unpkg.com/leancloud-storage@4.15.2/dist/av-min.js'; 
+                     document.head.appendChild(s);"></script>
     
-    <!-- iPad Splash Screens -->
+    <!-- iPad/iOS Styles -->
     <style>
         /* Prevent pull-to-refresh on iOS */
         html, body {
             overscroll-behavior-y: contain;
         }
+        /* Fallback fonts if web fonts fail to load */
+        body {
+            font-family: 'Nunito', -apple-system, BlinkMacSystemFont, 'PingFang SC', 'Microsoft YaHei', sans-serif;
+        }
+        h1, h2, .logo-text {
+            font-family: 'Fredoka One', 'PingFang SC', -apple-system, sans-serif;
+        }
     </style>
 </head>
 <body>
+    <!-- Loading Screen (shown while app initializes) -->
+    <div id="loading-screen" style="display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); z-index: 9999; justify-content: center; align-items: center; flex-direction: column;">
+        <div style="font-size: 4rem; animation: bounce 1s infinite;">📚</div>
+        <div style="color: white; font-size: 1.5rem; margin-top: 1rem;">加载中 Loading...</div>
+        <style>@keyframes bounce { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-20px); } }</style>
+    </div>
+
     <!-- Animated Background -->
     <div class="bg-shapes">
         <div class="shape shape-1"></div>
@@ -664,6 +692,18 @@
             if (typeof Leaderboard !== 'undefined') {
                 Leaderboard.init();
             }
+            
+            // Hide loading screen
+            setTimeout(function() {
+                var loader = document.getElementById('loading-screen');
+                if (loader) {
+                    loader.style.opacity = '0';
+                    loader.style.transition = 'opacity 0.3s';
+                    setTimeout(function() { loader.style.display = 'none'; }, 300);
+                }
+            }, 500);
+            
+            console.log('✅ App initialized successfully!');
         }
     </script>
     

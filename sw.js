@@ -3,7 +3,7 @@
  * Enables offline functionality
  */
 
-const CACHE_NAME = 'pet-words-v3.3.1';
+const CACHE_NAME = 'pet-words-v3.4.0';
 const ASSETS_TO_CACHE = [
   './',
   './index.html',
