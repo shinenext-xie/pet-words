@@ -219,39 +219,44 @@ const app = {
     async updateTopicsProgress() {
         const topics = dataLoader.getTopics();
         
-        // Try to get cloud progress first
-        let cloudTopicProgress = {};
+        // Get wordLearning data directly from cloud (most accurate source)
+        let wordLearning = {};
         if (typeof DB !== 'undefined' && DB.getCurrentUser()) {
             try {
                 const cloudData = await DB.loadProgress();
-                if (cloudData && cloudData.topicProgress) {
-                    cloudTopicProgress = cloudData.topicProgress;
+                if (cloudData && cloudData.wordLearning) {
+                    wordLearning = cloudData.wordLearning;
                 }
             } catch (error) {
                 console.warn('Could not load cloud progress:', error);
             }
         }
         
+        // Calculate learned count per topic from wordLearning
+        const learnedPerTopic = {};
+        for (const [key, data] of Object.entries(wordLearning)) {
+            const topicId = data.topicId;
+            if (!learnedPerTopic[topicId]) {
+                learnedPerTopic[topicId] = 0;
+            }
+            // Count as learned if masteryLevel >= FAMILIAR (2)
+            if (data.masteryLevel >= 2) {
+                learnedPerTopic[topicId]++;
+            }
+        }
+        
+        console.log('📊 Topic progress calculated:', learnedPerTopic);
+        
         for (const topic of topics) {
             const progressFill = document.getElementById(`progress-${topic.id}`);
             const progressText = document.getElementById(`progress-text-${topic.id}`);
             
             if (progressFill && progressText) {
-                // Check cloud progress first
-                const cloudProgress = cloudTopicProgress[topic.id];
-                let learned = 0;
+                let learned = learnedPerTopic[topic.id] || 0;
                 let total = topic.wordCount;
                 
-                if (cloudProgress) {
-                    // Use cloud data (new detailed format)
-                    if (typeof cloudProgress === 'object') {
-                        learned = cloudProgress.wordsLearned || 0;
-                    } else {
-                        // Old format (just a number)
-                        learned = cloudProgress;
-                    }
-                } else {
-                    // Fallback to local storage
+                // Fallback to local storage if no cloud data
+                if (Object.keys(wordLearning).length === 0) {
                     const words = await dataLoader.getWords(topic.id);
                     const localProgress = progress.getTopicProgress(topic.id, words);
                     learned = localProgress.learned;
